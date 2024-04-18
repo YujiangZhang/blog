@@ -1,13 +1,6 @@
 <script setup>
-import LinkGrid from '../../components/LinkGrid.vue';
-import {ref} from 'vue'
-
-const data = ref([]);
-fetch('/data/bookmark/front.json')
-    .then(res=>res.json())
-    .then(res=>{
-        data.value = res;
-    })
+import LinkGrid from '@components/LinkGrid.vue';
+import data from '@data/bookmark/front.json';
 
 </script>
 

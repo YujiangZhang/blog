@@ -1,0 +1,13 @@
+[
+  {
+    "text": "Vue",
+    "items": [
+      { "text": "text", "link": "/bookmark" },
+      {
+        "text": "bilibili",
+        "link": "/bookmark",
+        "icon": "/assets/svg/bilibili.svg"
+      }
+    ]
+  }
+]

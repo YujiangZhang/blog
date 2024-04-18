@@ -3,6 +3,7 @@ import custom from "./custom";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  //
   lang: "zh-CN",
   title: "学习笔记",
   description: "学习笔记",
@@ -28,9 +29,9 @@ export default defineConfig({
     },
 
     lastUpdated: {
-      text: "Updated at",
+      text: "最后更新于",
       formatOptions: {
-        dateStyle: "full",
+        dateStyle: "short",
         timeStyle: "medium",
       },
     },
@@ -40,5 +41,17 @@ export default defineConfig({
     math: true,
   },
 
-  vite: {},
+  //
+  srcDir: "./docs",
+  outDir: "./dist",
+  cacheDir: "./.vitepress/cache",
+
+  vite: {
+    resolve: {
+      alias: {
+        "@data/": "/../data/",
+        "@components/": "/../components/",
+      },
+    },
+  },
 });
