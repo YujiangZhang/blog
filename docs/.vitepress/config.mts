@@ -3,6 +3,7 @@ import custom from "./custom";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/repo/',
   // outDir: "../dist",
 
   //
