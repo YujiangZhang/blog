@@ -2,8 +2,6 @@
 
 ## 原视频介绍
 
-[bilibili 脑洞部长](https://space.bilibili.com/33291981)
-
 <div style="position: relative; width: 100%; padding-top: 56.25%;">
     <iframe
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"

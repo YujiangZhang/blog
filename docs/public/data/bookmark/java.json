@@ -1,0 +1,10 @@
+[
+  {
+    "items": [
+      { "text": "Java", "link": "https://www.oracle.com/cn/java/",
+      "icon": "java" },
+      { "text": "Learn Java", "link": "https://dev.java/learn/",
+      "icon": "java" }
+    ]
+  }
+]

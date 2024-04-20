@@ -1,0 +1,12 @@
+{
+  "ai": "/data/bookmark/ai.json",
+  "backend": "/data/bookmark/backend.json",
+  "file-processing": "/data/bookmark/file-processing.json",
+  "angular": "/data/bookmark/frontend/angular.json",
+  "frontend-development": "/data/bookmark/frontend/frontend-development.json",
+  "react": "/data/bookmark/frontend/react.json",
+  "vue": "/data/bookmark/frontend/vue.json",
+  "java": "/data/bookmark/java.json",
+  "python": "/data/bookmark/python.json",
+  "resource": "/data/bookmark/resource.json"
+}

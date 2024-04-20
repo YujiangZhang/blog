@@ -1,0 +1,15 @@
+---
+aside: false
+---
+
+# Java
+
+<script setup>
+import LinkGrid from '/src/components/LinkGrid.vue';
+import { useBookmark } from "/src/client";
+
+const { data } = useBookmark('java');
+
+</script>
+
+<LinkGrid :data="data" titleLevel="normal" />
