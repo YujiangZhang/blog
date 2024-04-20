@@ -1,0 +1,18 @@
+[
+  {
+    "items": [
+      { "text": "Python", "link": "https://www.python.org/",
+      "icon": "python.ico" },
+      {
+        "text": "Flask",
+        "link": "https://flask.palletsprojects.com/en/latest/",
+        "icon": "flask.webp"
+      },
+      {
+        "text": "pandas",
+        "link": "https://pandas.pydata.org/",
+        "icon": "pandas.ico"
+      }
+    ]
+  }
+]
