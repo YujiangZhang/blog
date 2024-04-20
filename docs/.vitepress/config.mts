@@ -5,11 +5,15 @@ import custom from "./custom";
 export default defineConfig({
   // outDir: "../dist",
 
-  //
   lang: "zh-CN",
   title: "Jade Zhang",
   description: "学习笔记",
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  head: custom.defineHead({
+    favicon: {
+      theme: "light",
+      shape: "rounded",
+    },
+  }),
 
   lastUpdated: true,
 
@@ -28,8 +32,7 @@ export default defineConfig({
       {
         icon: "github",
         link: "https://github.com/YujiangZhang/blog",
-
-        ariaLabel: "cool link",
+        ariaLabel: "github link",
       },
     ],
 
@@ -68,6 +71,9 @@ export default defineConfig({
 
   markdown: {
     math: true,
+    image: {
+      // lazyLoading: true,
+    },
   },
 
   vite: {},
