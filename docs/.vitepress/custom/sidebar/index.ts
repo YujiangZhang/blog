@@ -1,9 +1,10 @@
-import { CustomSidebar } from "../types";
+import { DefaultTheme } from "vitepress";
+
 import englishSidebar from "./english";
 import guideSidebar from "./guide";
 import bookmarkSidebar from "./bookmark";
 
-const sidebar: CustomSidebar = {
+const sidebar: DefaultTheme.SidebarMulti = {
   ...guideSidebar,
   ...bookmarkSidebar,
   ...englishSidebar,

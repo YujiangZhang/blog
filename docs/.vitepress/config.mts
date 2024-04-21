@@ -31,7 +31,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/YujiangZhang/blog",
+        link: "https://github.com/zyj-dev/blog",
         ariaLabel: "github link",
       },
     ],
@@ -39,7 +39,7 @@ export default defineConfig({
     //
 
     editLink: {
-      pattern: "https://github.com/YujiangZhang/blog/tree/main/docs/:path",
+      pattern: "https://github.com/zyj-dev/blog/tree/main/docs/:path",
       text: "在 Github 上编辑此页面",
     },
 

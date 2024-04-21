@@ -1,6 +1,7 @@
-import { CustomSidebar } from "../types";
+import { DefaultTheme } from "vitepress";
 
-const guideSidebar: CustomSidebar = {
+
+const guideSidebar: DefaultTheme.SidebarMulti = {
   "/guide/": [
     {
       text: "指南",

@@ -1,6 +1,6 @@
-import { CustomSidebar } from "../types";
+import { DefaultTheme } from "vitepress";
 
-const englishSidebar: CustomSidebar = {
+const englishSidebar: DefaultTheme.SidebarMulti = {
   "/english/": [
     {
       text: "脑洞部长 - 150 天英文剧",

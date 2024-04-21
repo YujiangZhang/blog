@@ -1,8 +1,8 @@
 import { HeadConfig } from "vitepress";
 
 /*
-* 在 config 中配置
-*/
+ * 在 config 中配置
+ */
 
 // #region 图标
 type FaviconTheme = "light" | "dark"; // 不提供 其他 类型
@@ -76,22 +76,24 @@ const funMapping = {
   favicon: ({ theme, shape }) => getFontFavicon(theme, shape),
 };
 
-export default function defineHead(options: {
-  favicon?: {
-    theme?: FaviconTheme;
-    shape?: FaviconShape;
-  };
-}) {
-  let head = [] as HeadConfig[];
+export default function defineHead(
+  options: {
+    favicon?: {
+      theme?: FaviconTheme;
+      shape?: FaviconShape;
+    };
+  },
+  head: HeadConfig[] = []
+) {
+  let innerHead = [] as HeadConfig[];
 
   for (const key in options) {
     if (!Reflect.has(funMapping, key)) continue;
 
     const func = funMapping[key];
     const res = func(options[key]) as HeadConfig[];
-    head = [...head, ...res];
+    innerHead = [...innerHead, ...res];
   }
 
-  return head;
+  return [...innerHead, ...head];
 }
-

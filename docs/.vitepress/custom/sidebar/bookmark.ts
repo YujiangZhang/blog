@@ -1,27 +1,40 @@
-import { CustomSidebar } from "../types";
+import { DefaultTheme } from "vitepress";
 
-const bookmarkSidebar: CustomSidebar = {
+const bookmarkSidebar: DefaultTheme.SidebarMulti = {
   "/bookmark/": [
     {
       text: "书签",
+      base: "/bookmark",
+      collapsed: false,
       items: [
-        { text: "AI", link: "/bookmark/ai" },
-        { text: "文件处理", link: "/bookmark/file-processing" },
-        { text: "资源导航", link: "/bookmark/resource" },
+        { text: "AI", link: "/ai" },
+        { text: "资源导航", link: "/resource" },
+        { text: "文件处理", link: "/file-processing" },
+      ],
+    },
+    {
+      text: "编程",
+      base: "/bookmark/coding",
+      collapsed: false,
+      items: [
         {
           text: "前端",
-          collapsed: true,
           items: [
-
-            { text: "开发", link: "/bookmark/frontend/frontend-development" },
-            { text: "vue", link: "/bookmark/frontend/vue" },
-            { text: "react", link: "/bookmark/frontend/react" },
-            { text: "angular", link: "/bookmark/frontend/angular" },
+            {
+              text: "开发",
+              link: "/frontend/frontend-development",
+            },
+            { text: "vue", link: "/frontend/vue" },
+            { text: "react", link: "/frontend/react" },
+            {
+              text: "angular",
+              link: "/frontend/angular",
+            },
           ],
         },
-        { text: "后端", link: "/bookmark/backend" },
-        { text: "Python", link: "/bookmark/python" },
-        { text: "Java", link: "/bookmark/java" },
+        { text: "后端", link: "/backend" },
+        { text: "Python", link: "/python" },
+        { text: "Java", link: "/java" },
       ],
     },
   ],
