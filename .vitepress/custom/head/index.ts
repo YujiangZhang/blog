@@ -5,7 +5,7 @@ import { HeadConfig } from "vitepress";
  */
 
 // #region 图标
-type FaviconTheme = "light" | "dark"; // 不提供 其他 类型
+type FaviconTheme = "light" | "dark";
 type FaviconShape = "rounded" | "circle" | null;
 
 /** 获得 /favicon/ 中图标相关文件路径 */
@@ -19,7 +19,7 @@ function getFaviconPath(
   theme && (folder = theme);
   shape && (folder += `_${shape}`);
 
-  folder = `/favicon/${folder}`;
+  folder = `/favicon/${folder}`; // public 下
 
   if (!filepath) {
     return folder;

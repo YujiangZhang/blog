@@ -1,12 +1,18 @@
 import { defineConfig } from "vitepress";
 import custom from "./custom";
+import path from "path";
+
+const __dirname = path.dirname(__filename);
+const __rootname = path.resolve(__dirname, "../");
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  // outDir: "../dist",
+  srcDir: "docs",
+  outDir: "dist",
 
+  //
   lang: "zh-CN",
-  title: "Jade Zhang",
+  title: "Jade",
   description: "学习笔记",
   head: custom.defineHead({
     favicon: {
@@ -19,6 +25,12 @@ export default defineConfig({
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+
+    logo: '/logo.svg',
+    // logo: {
+    //   light: '/favicon/light/favicon-32x32.png',
+    //   dark: '/favicon/dark/favicon-32x32.png'
+    // },
 
     nav: custom.nav,
 
@@ -76,5 +88,12 @@ export default defineConfig({
     },
   },
 
-  vite: {},
+  vite: {
+    resolve: {
+      alias: {
+        "@src": path.resolve(__rootname, "src"),
+        "@docs": path.resolve(__rootname, "docs"),
+      },
+    },
+  },
 });

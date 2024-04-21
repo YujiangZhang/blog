@@ -9,17 +9,9 @@ Created by potrace 1.16, written by Peter Selinger 2001-2019
 </metadata>
 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
-<linearGradient id="gradient-j" x1="68%" y1="20%" x2="0%" y2="100%">
-  <stop offset="0%" style="stop-color:#995ffd" />
-  <stop offset="50%" style="stop-color:#47caff" />
-</linearGradient>
-<linearGradient id="gradient-z" x1="100%" y1="0" x2="0" y2="100%">
-  <stop offset="45%" style="stop-color:#bd34fe" />
-  <stop offset="85%" style="stop-color:#995ffd" />
-</linearGradient>
-<linearGradient id="gradient-dot" x1="100%" y1="0" x2="0" y2="100%">
-  <stop offset="30%" style="stop-color:#995ffd" />
-  <stop offset="100%" style="stop-color:#995ffd" />
+<linearGradient id="gradient" x1="68%" y1="0%" x2="0%" y2="100%">
+  <stop offset="0%" style="stop-color:#6f63f4" />
+  <stop offset="100%" style="stop-color:#09a1ff" />
 </linearGradient>
 <path d="M1642 4459 c-228 -24 -332 -69 -463 -199 -99 -98 -166 -195 -209
 -302 -33 -85 -38 -129 -14 -152 27 -28 39 -20 74 48 80 155 435 328 849 412
@@ -30,7 +22,7 @@ fill="#000000" stroke="none">
 -16 -42 -20 -79 -20 -169 0 -104 3 -121 27 -173 95 -203 324 -287 608 -221
 317 73 631 411 910 979 158 323 241 534 420 1075 252 759 382 1082 523 1294
 75 113 206 244 360 360 64 49 117 90 117 92 0 8 -1370 1 -1448 -7z"
-fill="url(#gradient-j)"/>
+fill="url(#gradient)"/>
 <path d="M4622 3117 c-38 -36 -84 -73 -103 -83 -47 -25 -197 -30 -319 -11 -52
 9 -185 30 -295 47 -249 39 -349 38 -439 -3 -135 -62 -193 -138 -353 -467 -97
 -198 -106 -221 -110 -287 -6 -76 1 -123 17 -123 6 0 23 21 38 46 72 123 224
@@ -40,9 +32,9 @@ fill="url(#gradient-j)"/>
 177 63 360 258 643 683 157 237 203 324 211 406 13 132 -24 153 -83 46 -280
 -510 -467 -706 -781 -815 -116 -40 -279 -50 -399 -24 -81 18 -217 78 -268 119
 l-29 23 484 470 c451 438 684 660 870 830 l76 69 -31 14 c-17 7 -59 16 -93 19
-l-61 5 -70 -66z" fill="url(#gradient-z)"/>
+l-61 5 -70 -66z" fill="url(#gradient)"/>
 <path d="M2236 1745 c-61 -25 -136 -89 -162 -137 -8 -15 -14 -48 -14 -74 0
 -40 5 -51 33 -78 34 -31 154 -96 179 -96 8 0 21 13 30 28 28 46 168 180 209
-199 43 20 58 60 42 110 -23 72 -195 98 -317 48z" fill="url(#gradient-dot)"/>
+199 43 20 58 60 42 110 -23 72 -195 98 -317 48z" fill="url(#gradient)"/>
 </g>
 </svg>

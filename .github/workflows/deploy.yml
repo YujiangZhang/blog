@@ -44,11 +44,11 @@ jobs:
       - name: Install dependencies
         run: yarn install # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
-        run: yarn docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: yarn build # 或 pnpm build / yarn build / bun run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: dist
 
   # 部署工作
   deploy:
@@ -58,6 +58,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     name: Deploy
+    if: contains(github.event.head_commit.message, '[deploy]')
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

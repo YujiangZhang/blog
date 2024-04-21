@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const props = defineProps<{
   src: string | undefined;
@@ -26,13 +26,45 @@ const style = computed(() => {
   };
 });
 
-//
+/** 处理引用 logo 内文件的情况 */
 const normalizeSrc = (src: string) => {
   if (!props.logo) return src;
   return `/assets/logo/${src.lastIndexOf(".") === -1 ? src + ".svg" : src}`;
 };
 
-//
+// 异步延迟
+const asyncDelay = async () => {
+  return new Promise((resolve, _reject) => {
+    setTimeout(() => resolve(true), 300);
+  });
+};
+
+// blob URL
+const blobURLs: string[] = [];
+const clearBlobURL = () => {
+  blobURLs.forEach((url) => URL.revokeObjectURL(url));
+};
+
+/** 每当调用该函数，在合适的时机调用 clearBlobURL */
+const getImageBlobURL = async (src: string) => {
+  const res = await fetch(normalizeSrc(src));
+
+  if (!res.ok) {
+    throw new Error(`图片 ${src} 加载失败, statusText ${res.statusText}`);
+  }
+
+  const blob = await res.blob();
+
+  if (blob.type.includes("text")) {
+    throw new Error(`图片 <${src}> 加载失败, ${blob.type} 不是图片类型`);
+  }
+  const url = URL.createObjectURL(blob);
+  blobURLs.push(url);
+
+  return url;
+};
+
+/** 加载图片 */
 const fetchImage = async () => {
   if (!props.src) {
     error.value = "加载图片失败: 链接无效";
@@ -41,23 +73,23 @@ const fetchImage = async () => {
   }
 
   try {
-    const res = await fetch(normalizeSrc(props.src));
+    const [blobURL] = await Promise.all([
+      getImageBlobURL(props.src),
+      asyncDelay(),
+    ]);
 
-    if (!res.ok) {
-      throw new Error(`加载图片失败: ${res.statusText}`);
-    }
-
-    // blob
-    const blob = await res.blob();
-    src.value = URL.createObjectURL(blob);
+    src.value = blobURL;
     state.value = "success";
   } catch (err) {
     error.value = err.message;
     state.value = "error";
+
+    /*@__PURE__*/ console.error(`[fetchImage] ${err.message}`);
   }
 };
 
 onMounted(() => fetchImage());
+onUnmounted(() => clearBlobURL());
 </script>
 
 <template>
@@ -87,13 +119,12 @@ onMounted(() => fetchImage());
   object-fit: contain;
 }
 
-/* 禁用 loading 样式，减弱闪烁视觉效果 */
-/* .loading {
-  background: linear-gradient(to top left, cyan, lightcyan);
-} */
+.loading {
+  background: linear-gradient(to top left, #09a1ff, #7ed0fc);
+}
 
 .error {
-  background: linear-gradient(to top left, tomato, peachpuff);
+  background: linear-gradient(to top left, #ff6347, #ff8e51);
 }
 
 .null {

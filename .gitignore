@@ -7,3 +7,5 @@ node_modules/
 **/cache/
 
 **/dist/
+
+desktop.ini

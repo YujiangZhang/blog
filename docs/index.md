@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Jade Zhang"
-  text: "学习笔记"
+  text: "笔记"
   tagline: 多情自古空余恨，好梦由来最易醒。
   image:
     src: /logo.svg
