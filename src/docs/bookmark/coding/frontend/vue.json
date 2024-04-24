@@ -1,0 +1,64 @@
+[
+  {
+    "items": [
+      { "text": "Vue Blog", "link": "https://blog.vuejs.org/", "icon": "vue" }
+    ]
+  },
+  {
+    "text": "文档",
+    "items": [
+      { "text": "Vue", "link": "https://cn.vuejs.org/", "icon": "vue" },
+      { "text": "Vite", "link": "https://cn.vitejs.dev/", "icon": "vite" },
+      {
+        "text": "Vue Router",
+        "link": "https://router.vuejs.org/zh/",
+        "icon": "vue"
+      },
+      {
+        "text": "Pinia",
+        "link": "https://pinia.vuejs.org/zh/",
+        "icon": "pinia"
+      },
+      {
+        "text": "Nuxt",
+        "link": "https://nuxt.com/",
+        "icon": "nuxt"
+      },
+      {
+        "text": "VueUse",
+        "link": "https://www.vueusejs.com/",
+        "icon": "vueuse"
+      }
+    ]
+  },
+  {
+    "text": "Github",
+    "items": [
+      {
+        "text": "vuejs/core",
+        "link": "https://github.com/vuejs/core",
+        "icon": "vue"
+      },
+      {
+        "text": "vitejs/vite",
+        "link": "https://github.com/vitejs/vite",
+        "icon": "vite"
+      },
+      {
+        "text": "nuxt/nuxt",
+        "link": "https://github.com/nuxt/nuxt/tree/2.x?tab=readme-ov-file",
+        "icon": "nuxt"
+      }
+    ]
+  },
+  {
+    "text": "UI",
+    "items": [
+      {
+        "text": "Ant Design Vue",
+        "link": "https://www.antdv.com/components/overview-cn",
+        "icon": "ant-design-vue"
+      }
+    ]
+  }
+]

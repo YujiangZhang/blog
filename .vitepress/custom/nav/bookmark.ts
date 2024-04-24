@@ -1,17 +1,15 @@
 import { DefaultTheme } from "vitepress";
 
-type NavItem = DefaultTheme.NavItem;
-
-//
-const bookmark: NavItem = {
+const bookmark: DefaultTheme.NavItem = {
   text: "书签",
+  activeMatch: "/bookmarks/",
   items: [
     // more
     {
       items: [
         {
           text: "更多 ♾️",
-          link: "/bookmark/index",
+          link: "/bookmarks/",
         },
       ],
     },

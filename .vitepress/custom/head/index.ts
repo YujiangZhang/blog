@@ -1,12 +1,8 @@
 import { HeadConfig } from "vitepress";
 
-/*
- * 在 config 中配置
- */
-
 // #region 图标
 type FaviconTheme = "light" | "dark";
-type FaviconShape = "rounded" | "circle" | null;
+type FaviconShape = "rounded" | "circle";
 
 /** 获得 /favicon/ 中图标相关文件路径 */
 function getFaviconPath(

@@ -1,13 +1,13 @@
 import { DefaultTheme } from "vitepress";
 
-const englishSidebar: DefaultTheme.SidebarMulti = {
-  "/english/": [
+const english: DefaultTheme.SidebarMulti = {
+  "/learning-english/": [
     {
       text: "脑洞部长 - 150 天英文剧",
-      link: "/english/150 天英文剧/index",
+      link: "/learning-english/150 天英文剧/index",
       collapsed: true,
 
-      items: [{ text: "第一天", link: "/english/150 天英文剧/001" }],
+      items: [{ text: "第一天", link: "/learning-english/150 天英文剧/001" }],
     },
   ],
 
@@ -16,4 +16,4 @@ const englishSidebar: DefaultTheme.SidebarMulti = {
   // ],
 };
 
-export default englishSidebar;
+export default english;

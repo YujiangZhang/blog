@@ -1,13 +1,13 @@
-import { DefaultTheme } from "vitepress";
+import { DefaultTheme, createContentLoader } from "vitepress";
 
-import englishSidebar from "./english";
-import guideSidebar from "./guide";
-import bookmarkSidebar from "./bookmark";
+import english from "./english";
+import bookmarks from "./bookmarks";
+import jade from "./jade";
 
-const sidebar: DefaultTheme.SidebarMulti = {
-  ...guideSidebar,
-  ...bookmarkSidebar,
-  ...englishSidebar,
+const sidebar: DefaultTheme.Sidebar = {
+  ...jade,
+  // ...bookmarks,
+  // ...english,
 };
 
 export default sidebar;

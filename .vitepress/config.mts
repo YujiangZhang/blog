@@ -1,19 +1,27 @@
 import { defineConfig } from "vitepress";
 import custom from "./custom";
-import path from "path";
-
-const __dirname = path.dirname(__filename);
-const __rootname = path.resolve(__dirname, "../");
+import { genFeed } from "./genFeed";
+import sidebarPlugin from "./custom/plugins/vite-plugin-sidebar-generator";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  srcDir: "docs",
-  outDir: "dist",
+  cleanUrls: true,
+  srcExclude: ["**/README.md", "src/**/*.md"],
+  metaChunk: true,
 
-  //
+  buildEnd: genFeed,
+  vite: {
+    plugins: [
+      sidebarPlugin({
+        ignoreSegments: ["index.md"],
+      }),
+    ],
+  },
+
+  // #region 站点数据
   lang: "zh-CN",
   title: "Jade",
-  description: "学习笔记",
+  description: "笔记",
   head: custom.defineHead({
     favicon: {
       theme: "light",
@@ -21,21 +29,35 @@ export default defineConfig({
     },
   }),
 
+  // #region 主题
+  appearance: "dark",
   lastUpdated: true,
 
+  // #region 国际化
+  locales: custom.locals,
+
+  // #region markdown
+  markdown: {
+    math: true,
+    image: {
+      lazyLoading: true,
+    },
+    container: {
+      tipLabel: "提示",
+      warningLabel: "警告",
+      dangerLabel: "危险",
+      infoLabel: "信息",
+      detailsLabel: "详细信息",
+    },
+  },
+
+  // region themeConfig
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
 
-    logo: '/logo.svg',
-    // logo: {
-    //   light: '/favicon/light/favicon-32x32.png',
-    //   dark: '/favicon/dark/favicon-32x32.png'
-    // },
-
+    logo: "/logo.svg",
     nav: custom.nav,
-
     sidebar: custom.sidebar,
-
     search: {
       provider: "local",
     },
@@ -43,17 +65,24 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/zyj-dev/blog",
+        link: "https://github.com/zyj-dev/",
         ariaLabel: "github link",
       },
     ],
 
-    //
-
+    //#region editLink
     editLink: {
-      pattern: "https://github.com/zyj-dev/blog/tree/main/docs/:path",
+      pattern: ({ filePath, frontmatter }) => {
+        const jSourceExt = frontmatter.jSourceExt as string | undefined; // 自定义属性
+        const link = jSourceExt
+          ? filePath.replace(".md", jSourceExt)
+          : filePath;
+
+        return `https://github.com/zyj-dev/blog/tree/main/docs/${link}`;
+      },
       text: "在 Github 上编辑此页面",
     },
+    //#endregion editLink
 
     lastUpdated: {
       text: "最后更新于",
@@ -76,24 +105,6 @@ export default defineConfig({
     outline: {
       level: "deep",
       label: "页面导航",
-    },
-  },
-
-  //
-
-  markdown: {
-    math: true,
-    image: {
-      // lazyLoading: true,
-    },
-  },
-
-  vite: {
-    resolve: {
-      alias: {
-        "@src": path.resolve(__rootname, "src"),
-        "@docs": path.resolve(__rootname, "docs"),
-      },
     },
   },
 });
