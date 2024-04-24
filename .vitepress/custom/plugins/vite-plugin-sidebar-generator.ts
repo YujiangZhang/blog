@@ -1,7 +1,6 @@
 import { DefaultTheme, Plugin, UserConfig } from "vitepress";
 import _, { map } from "lodash";
 import { Sidebar, SidebarPluginOptions } from "./types";
-import { writeFileSync } from "fs";
 
 const splitStr = (str: string, sepCount = 1, sep = "/") =>
   str.match(
@@ -104,8 +103,10 @@ function pagesToSidebarMulti(
   userConfig: UserConfig,
   options?: SidebarPluginOptions.Options
 ) {
-  const { ignoreSegments = [], baseSidebar = userConfig.themeConfig.sidebar } =
-    options || {};
+  const {
+    ignoreSegments = [],
+    baseSidebar = userConfig.themeConfig.sidebar || {},
+  } = options || {};
 
   const root = convertPagesToSidebarTree(pages, { ignoreSegments });
 
@@ -143,8 +144,6 @@ export default function sidebarPlugin(
       const { sidebar } = pagesToSidebarMulti(pages, userConfig, options);
 
       userConfig.themeConfig.sidebar = sidebar;
-
-      writeFileSync("test.json", JSON.stringify(vitepressConfig, null, 2));
 
       config = _config;
     },

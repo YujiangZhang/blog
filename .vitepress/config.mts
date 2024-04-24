@@ -57,7 +57,6 @@ export default defineConfig({
 
     logo: "/logo.svg",
     nav: custom.nav,
-    sidebar: custom.sidebar,
     search: {
       provider: "local",
     },
