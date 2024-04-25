@@ -246,7 +246,7 @@ export default class SidebarGenerator {
   }
 
   // #region 启动
-  start(): Config {
+  start() {
     // console.log("侧边栏自动生成 ...");
     const tree = this.genTreeMulti();
     const sidebarItems = this.convertItemsToArray(tree);

@@ -68,16 +68,16 @@ export default defineConfig({
       },
     ],
 
-    //#region editLink
-    // editLink: {
-    //   pattern: ({ filePath, frontmatter, ...rest }) => {
-    //     const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
-    //     const link = jSrcExt ? filePath.replace(".md", jSrcExt) : filePath;
+    // #region editLink
+    editLink: {
+      pattern: ({ filePath, frontmatter, ...rest }) => {
+        const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
+        const link = jSrcExt ? filePath.replace(".md", jSrcExt) : filePath;
 
-    //     return `https://github.com/zyj-dev/blog/tree/main/docs/${link}`;
-    //   },
-    //   text: "在 Github 上编辑此页面",
-    // },
+        return `https://github.com/zyj-dev/blog/tree/main/${link}`;
+      },
+      text: "在 Github 上编辑此页面",
+    },
 
     //#endregion editLink
     lastUpdated: {

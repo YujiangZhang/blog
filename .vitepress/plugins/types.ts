@@ -1,4 +1,4 @@
-import type { DefaultTheme, SiteConfig, UserConfig, Plugin } from "vitepress";
+import type { DefaultTheme, SiteConfig, UserConfig } from "vitepress";
 
 export type VPThemeConfig = Pick<DefaultTheme.Config, "sidebar" | "nav">;
 
