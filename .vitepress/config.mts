@@ -1,21 +1,20 @@
 import { defineConfig } from "vitepress";
 import custom from "./custom";
 import { genFeed } from "./genFeed";
-import sidebarPlugin from "./custom/plugins/vite-plugin-sidebar-generator";
+import { sidebarGeneratorPlugin } from "./plugins";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   cleanUrls: true,
   srcExclude: ["**/README.md", "src/**/*.md"],
   metaChunk: true,
+  sitemap: {
+    hostname: "https://jadezhang.cn",
+  },
 
   buildEnd: genFeed,
   vite: {
-    plugins: [
-      sidebarPlugin({
-        ignoreSegments: ["index.md"],
-      }),
-    ],
+    plugins: [sidebarGeneratorPlugin()],
   },
 
   // #region 站点数据
@@ -70,19 +69,17 @@ export default defineConfig({
     ],
 
     //#region editLink
-    editLink: {
-      pattern: ({ filePath, frontmatter }) => {
-        const jSourceExt = frontmatter.jSourceExt as string | undefined; // 自定义属性
-        const link = jSourceExt
-          ? filePath.replace(".md", jSourceExt)
-          : filePath;
+    // editLink: {
+    //   pattern: ({ filePath, frontmatter, ...rest }) => {
+    //     const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
+    //     const link = jSrcExt ? filePath.replace(".md", jSrcExt) : filePath;
 
-        return `https://github.com/zyj-dev/blog/tree/main/docs/${link}`;
-      },
-      text: "在 Github 上编辑此页面",
-    },
+    //     return `https://github.com/zyj-dev/blog/tree/main/docs/${link}`;
+    //   },
+    //   text: "在 Github 上编辑此页面",
+    // },
+
     //#endregion editLink
-
     lastUpdated: {
       text: "最后更新于",
       formatOptions: {

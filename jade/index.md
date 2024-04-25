@@ -6,20 +6,23 @@
 
 ## sidebar 侧边栏
 
-自动生成，但没有处理 path 问题，待处理。
+侧边栏会根据 pages 自动生成侧边栏，即源目录结构。**默认配置**时将根据以下规则生成：
 
-- 通过 `number-` 形式可以排序
-  - `001-test`、`1-test2` 等，这样的命名方式会被重命名为 `test`、`test2`
-  - 其他则默认为文件名自动排序
-  - 排序规则可自定义
-  - 命名规则可自定义
-- 自动生成的 sidebar 不破坏已有的 sidebar 配置
-  - 可手动再增加基础的 sidebar 配置
-- 待处理 path 显示问题
-- 可自定义忽略路径片段
+- 文件 'index.md' 会使该文件所在文件夹生成 link
+- 根据文件名排序
+- 文件名会删除以 `/\d+[-]/` 开头的部分，如:
+  - `01-folder/02-file.md`: 显示为 `folder/file`
+- 路由重写: `01-folder/02-file.md` 将生成 `folder/file.html`
+
+::: tip
+以上规则仅适用于默认配置。
+
+::: details 自定义说明
+<<< @/.vitepress/plugins/types.ts#sidebar
+:::
 
 ::: danger
-TODO: 重构 vite 插件
+底部编辑链接 filepath 会与原链接不一样
 :::
 
 ## markdown
@@ -32,31 +35,12 @@ TODO: 重构 vite 插件
 
 追加自定义选项，如一些自动生成的 `.md` 文件，追溯源文件信息片段。
 
-#### jSourceExt
+#### jSrcExt
 
-frontmatter 新增选项 `jSourceExt`，表示由 `file[.extname]` 文件生成。值为原始文件后缀 `.extname`，这将用于编辑链接指向正确的文件。
+frontmatter 新增选项 `jSrcExt`，表示由 `file[.ext]` 文件生成。值为原始文件后缀 `.ext`，这将用于编辑链接指向正确的文件。
 
 :::details 书签示例
 <<< @/bookmarks/[bm].md#frontmatter{4}
-:::
-
-::: details editLink 配置
-
-```ts
-{
-  editLink: {
-    pattern({ filePath, frontmatter }){
-      const jSourceExt = frontmatter.jSourceExt as string | undefined; // [!code focus]
-      const link = jSourceExt
-        ? filePath.replace(".md", jSourceExt)
-        : filePath;
-      return `https://github.com/zyj-dev/blog/tree/main/docs/${link}`;
-    },
-    text: "在 Github 上编辑此页面",
-  },
-}
-```
-
 :::
 
 ## Github Action

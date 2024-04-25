@@ -3,7 +3,7 @@
 title: Jade
 titleTemplate: 书签
 aside: false
-jSourceExt: .json # [!code focus]
+jSrcExt: .json # [!code focus]
 # endregion frontmatter
 ---
 
