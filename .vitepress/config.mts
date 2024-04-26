@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
-import custom from "./custom";
 import { genFeed } from "./genFeed";
-import { generateSidebar } from "./sidebar";
+import { generateSidebar } from "./sidebar/sidebarGenerator";
+import custom from "./custom";
 
 // #region sidebar
 const { sidebar, rewrites } = generateSidebar({

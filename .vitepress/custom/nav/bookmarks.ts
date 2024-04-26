@@ -1,17 +1,13 @@
 import { DefaultTheme } from "vitepress";
 
-const bookmark: DefaultTheme.NavItem = {
+const bookmarks: DefaultTheme.NavItem = {
   text: "书签",
   activeMatch: "/bookmarks/",
   items: [
     // more
     {
-      items: [
-        {
-          text: "更多 ♾️",
-          link: "/bookmarks/",
-        },
-      ],
+      text: "更多 ♾️",
+      link: "/bookmarks/",
     },
 
     // 快捷
@@ -38,9 +34,7 @@ const bookmark: DefaultTheme.NavItem = {
         },
       ],
     },
-
-    //
   ],
 };
 
-export default bookmark;
+export default bookmarks;

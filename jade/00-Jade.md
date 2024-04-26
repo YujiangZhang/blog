@@ -1,16 +1,24 @@
-# 自定义配置
+# Jade
 
-:::tip 提示
+<JSocial />
+
+:::tip
+本站使用 [vitepress](https://vitepress.dev/zh/) 构建，本页记录了一些使用备忘。
+
+本页可能会频繁更改，所以会出现该页会忘记更新，更甚至代码片段文件位置改变等问题。
+
 如果是自定义的 config 等**一次性配置**，则见 `config.ts` 或相关文件内的类型，不再列出。
 :::
 
-## sidebar 侧边栏
+## 待办
 
-~~vite 插件: 侧边栏会根据 pages 自动生成侧边栏，即源目录结构。~~
+- favicon 不一起被打包
 
-配置创建时调用 **默认配置**时将根据以下规则生成：
+## 侧边栏
 
-- 文件 'index.md' 会使该文件所在文件夹生成 link
+配置创建时调用，**默认配置**将根据以下规则生成：
+
+- 文件 `index.md` 会使该文件所在文件夹生成 link
 - 根据文件名排序
 - 文件名会删除以 `/\d+[-]/` 开头的部分，如:
   - `01-folder/02-file.md`: 显示为 `folder/file`
@@ -25,16 +33,21 @@
 <<< @/.vitepress/sidebar/types.ts#Options
 :::
 
+## 书签
+
+只需要提供 `.json` 文件，侧边栏会自动生成，命名规遵守[sidebar 侧边栏](#侧边栏)的规则。
+
+为了能够在浏览器中得到正确的文件链接，自定义了 frontmatter 的 [jSrcExt](#jSrcExt) 属性。
 
 ## markdown
-
-::: tip 提示
-一些仅在 `.md` 文件内部的定义说明，目前只有在 `/bookmarks/` 中使用。
-:::
 
 ### frontmatter
 
 追加自定义选项，如一些自动生成的 `.md` 文件，追溯源文件信息片段。
+
+::: tip 提示
+目前只有在 `/bookmarks/` 中使用。
+:::
 
 #### jSrcExt
 
@@ -46,10 +59,10 @@ frontmatter 新增选项 `jSrcExt`，表示由 `file[.ext]` 文件生成。值�
 
 ## Github Action
 
-### skip build 跳过构建
+### ci skip 跳过构建
 
 ```sh
-$ git commit -m '...' -m '[skip build]'
+$ git commit -m '...' -m '[ci skip]'
 ```
 
 ::: tip
@@ -64,7 +77,7 @@ $ git commit -m '...' -m '[deploy]'
 ```
 
 ::: tip
-如果已经 skip build 了，该命令不会触发 deploy
+如果已经 ci skip 了，该命令不会触发 deploy
 
 ::: details deploy 配置
 <<< @/.github/workflows/deploy.yml#deploy{8}

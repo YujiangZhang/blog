@@ -13,7 +13,7 @@ export type Sidebar = SidebarItem[] | SidebarMulti;
  */
 export type TextLink = { text: string; link: string };
 
-export interface RequiredOptions {
+export interface Options {
   src?: string;
 
   /**
@@ -31,32 +31,41 @@ export interface RequiredOptions {
   include?: string[];
 
   /**
+   * 对文件夹下的文件排序
+   *
+   * @see https://www.lodashjs.com/docs/lodash.sortBy#_sortbycollection-iteratees_identity
+   */
+  sortRules?: any[];
+
+  /**
    * 路由重写规则， path 为 slash (斜杠) 之间的部分
    *
    * 这会改变 sidebarItem 的 link 值，值为 PathPage.page
    *
    * 默认重写规则为去除 path 以 /\d+[-]/ 开头的部分，见 static defaultRewritePath
    */
-  rewritePath:
+  rewritePath?:
     | null
     | ((segment: string, parentPath?: TextLink | undefined | null) => TextLink);
 
   /**
-   * 路由重写结束，排序 sidebarItems
+   * text 是否 path 相同，即 SidebarItem.text 为 rewritePath 结果中的 path
    *
-   * 默认 ['text']，见 static defaultSortRules
-   *
-   * @see https://www.lodashjs.com/docs/lodash.sortBy#_sortbycollection-iteratees_identity
+   * 默认 true
    */
-  sortRules: any[];
+  pathAsText?: boolean;
 
   /**
    * 路由重写结束，自定义 sidebarItem
    *
    * 默认去除 text 值开头符合 /\d+[-]/ 的部分, 见 static default transformSidebarItem
    */
-  transformSidebarItem: (sidebarItem: SidebarItem) => SidebarItem;
+  transformSidebarItem?: (sidebarItem: SidebarItem) => SidebarItem;
 }
 
-export type Options = Partial<RequiredOptions>;
+export type MergeOptions = {
+  sidebar?: SidebarMulti;
+  rewrites?: Record<string, string>;
+} & ({ sidebar: SidebarMulti } | { rewrites: Record<string, string> });
+
 // #endregion Options

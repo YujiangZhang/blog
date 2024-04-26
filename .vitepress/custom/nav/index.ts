@@ -1,8 +1,8 @@
 import { DefaultTheme } from "vitepress";
-import bookmark from "./bookmark";
+import bookmarks from "./bookmarks";
 import english from "./learningEnglish";
 import jade from "./jade";
 
-const nav: DefaultTheme.Config["nav"] = [jade, bookmark, english];
+const nav: DefaultTheme.Config["nav"] = [jade, english, bookmarks];
 
 export default nav;

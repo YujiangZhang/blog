@@ -5,9 +5,7 @@ import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import { nextTick, provide, watchEffect } from "vue";
 
-const { isDark, ...rest } = useData();
-
-/*#__PURE__*/ console.log(rest);
+const { isDark } = useData();
 
 const enableTransitions = () =>
   "startViewTransition" in document &&

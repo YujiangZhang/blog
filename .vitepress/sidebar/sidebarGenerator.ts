@@ -1,7 +1,13 @@
-import { readdirSync, statSync, writeFile, writeFileSync, writeSync } from "fs";
-import type { SidebarItem, SidebarMulti, Options, TextLink } from "./types";
-import _ from "lodash";
+import type {
+  SidebarItem,
+  SidebarMulti,
+  Options,
+  TextLink,
+  MergeOptions,
+} from "./types";
+import { readdirSync, statSync } from "fs";
 import path from "path";
+import _ from "lodash";
 
 type Info = {
   text: string;
@@ -10,19 +16,11 @@ type Info = {
   rewrite?: TextLink;
 };
 
-function errorMessage(message?: string) {
-  throw new Error(
-    `[SidebarGenratorPlugin] 错误: ${message || import.meta.url}`
-  );
-}
-
-function warnMessage(message?: string) {
-  console.log(`[SidebarGenratorPlugin] 警告: ${message || import.meta.url}`);
-}
-
 function removeStartingDigitsAndHyphens(str: string) {
   return str.replace(/^(?:\d+[-])?(.*)$/, "$1");
 }
+
+// #region 类
 
 export default class SidebarGenerator {
   pages: string[];
@@ -43,6 +41,7 @@ export default class SidebarGenerator {
   ]);
   _include = new Set([".md"]);
 
+  pathAsText: Options["pathAsText"];
   rewritePath: Options["rewritePath"];
   sortRules: Options["sortRules"];
   transformSidebarItem: Options["transformSidebarItem"];
@@ -53,12 +52,14 @@ export default class SidebarGenerator {
       exclude = [],
       include = [],
       sortRules = [],
+      pathAsText = true,
       src = SidebarGenerator.defaultSrc,
       rewritePath = SidebarGenerator.defaultRewritePath,
-      transformSidebarItem = SidebarGenerator.defaultFormateSidebarItem,
+      transformSidebarItem,
     }: Options = options ?? {};
 
     this.src = src;
+    this.pathAsText = pathAsText;
     this.exclude = SidebarGenerator.defaultExclude(exclude);
     this.include = SidebarGenerator.defaultInclude(include);
 
@@ -78,7 +79,6 @@ export default class SidebarGenerator {
   }
 
   static defaultRewritePath(segment: string, parentPath?: null | TextLink) {
-    // console.log(path);
     const ext = path.extname(segment);
     let text = removeStartingDigitsAndHyphens(segment);
     let linkFormater = text;
@@ -95,6 +95,7 @@ export default class SidebarGenerator {
         : `/${linkFormater}`,
     };
   }
+
   static defaultFormateSidebarItem(item: SidebarItem) {
     const ext = path.extname(item.text!);
     item.text = removeStartingDigitsAndHyphens(item.text!).replace(ext, "");
@@ -130,12 +131,12 @@ export default class SidebarGenerator {
 
   // #region info
   info(filepath: string, parentInfo?: Info): Info {
-    let filename = path.basename(filepath);
+    let text = path.basename(filepath);
     let ext: string | null = path.extname(filepath);
 
-    let filenameFormater = filename;
+    let filenameFormater = text;
     if (ext && ext !== ".md") {
-      filenameFormater = filename.replace(ext, ".md");
+      filenameFormater = text.replace(ext, ".md");
     }
 
     let rewrite: Record<"text" | "link", string> | undefined;
@@ -144,10 +145,12 @@ export default class SidebarGenerator {
         ? parentInfo.rewrite
         : null;
       rewrite = this.rewritePath(filenameFormater, parentRewrite);
+
+      this.pathAsText && (text = rewrite.text);
     }
 
     return {
-      text: filename,
+      text: text,
       ext: ext || null,
       link: parentInfo
         ? `${parentInfo.link}/${filenameFormater}`
@@ -216,13 +219,17 @@ export default class SidebarGenerator {
       const item = this.genItem(info);
 
       if (valid.isDir) {
-        item.items = this.genItems(filepath, {
+        const children = this.genItems(filepath, {
           parentInfo: info,
           parentItem: item,
         });
+        if (children.length !== 0) {
+          item.items = children;
+          item.collapsed = false;
+        }
       }
 
-      if (info.text === "index.md") {
+      if (info.text === "index" || info.text === "index.md") {
         parentItem && (parentItem.link = info.link);
       } else {
         items.push(item);
@@ -246,7 +253,63 @@ export default class SidebarGenerator {
   // #region 启动
   start() {
     this.generate();
-    writeFileSync("test.json", JSON.stringify(this.sidebar, null, 2));
     return { sidebar: this.sidebar, rewrites: this.rewrites };
   }
+
+  static mergeCustomizer(item: unknown, srcItem: unknown) {
+    if (_.isArray(item)) {
+      return item.concat(srcItem);
+    }
+  }
+
+  mergeWith(
+    { sidebar, rewrites }: MergeOptions,
+    customizer = SidebarGenerator.mergeCustomizer
+  ) {
+    this.generate();
+    return {
+      sidebar: _.mergeWith(this.sidebar, sidebar, customizer),
+      rewrites: _.mergeWith(this.rewrites, rewrites, customizer),
+    };
+  }
 }
+
+// #endregion 类
+
+// #region 函数
+
+interface SidebarGeneratorResult {
+  sidebar: SidebarMulti;
+  rewrites: Record<string, string>;
+}
+
+type GeneratorCustomizer = (...args: any[]) => any;
+
+export function generateSidebar(options: Options): SidebarGeneratorResult;
+export function generateSidebar(
+  options: Options,
+  mergeOptions: MergeOptions,
+  customizer?: GeneratorCustomizer
+): SidebarGeneratorResult;
+
+export function generateSidebar(
+  options: Options,
+  mergeOptions?: MergeOptions,
+  customizer: GeneratorCustomizer = SidebarGenerator.mergeCustomizer
+): SidebarGeneratorResult {
+  try {
+    const generater = new SidebarGenerator(options);
+    if (mergeOptions) {
+      return generater.mergeWith(mergeOptions, customizer);
+    } else {
+      return generater.start();
+    }
+  } catch (err) {
+    console.log(`\x1b[33m[generateSidebar] 生成失败: \x1b[0m`, err);
+    return (mergeOptions ?? {
+      sidebar: {},
+      rewrites: {},
+    }) as SidebarGeneratorResult;
+  }
+}
+// #endregion 函数
