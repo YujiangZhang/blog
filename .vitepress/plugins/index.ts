@@ -11,9 +11,9 @@ export function sidebarGeneratorPlugin(
     config(config) {
       let sidebarGenerator: null | SidebarGenerator = new SidebarGenerator(
         config as Config,
-        { rewritePath: null, ...options }
+        { mutate: true, ...options }
       );
-      (config as Config).vitepress = sidebarGenerator.start();
+      sidebarGenerator.start();
     },
   };
 }

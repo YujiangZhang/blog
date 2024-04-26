@@ -1,16 +1,22 @@
 {
+  "/jade/": [
+    {
+      "text": "todo",
+      "link": "/jade/todo.md"
+    }
+  ],
   "/bookmarks/": [
     {
       "text": "resource",
-      "link": "/bookmarks/resource.md"
+      "link": "/bookmarks/00-resource.md"
     },
     {
       "text": "ai",
-      "link": "/bookmarks/ai.md"
+      "link": "/bookmarks/01-ai.md"
     },
     {
       "text": "file-processing",
-      "link": "/bookmarks/file-processing.md"
+      "link": "/bookmarks/03-file-processing.md"
     },
     {
       "text": "coding",
@@ -20,19 +26,19 @@
           "items": [
             {
               "text": "angular",
-              "link": "/bookmarks/coding/frontend/angular.md"
+              "link": "/bookmarks/coding/01-frontend/angular.md"
             },
             {
               "text": "frontend-development",
-              "link": "/bookmarks/coding/frontend/frontend-development.md"
+              "link": "/bookmarks/coding/01-frontend/frontend-development.md"
             },
             {
               "text": "react",
-              "link": "/bookmarks/coding/frontend/react.md"
+              "link": "/bookmarks/coding/01-frontend/react.md"
             },
             {
               "text": "vue",
-              "link": "/bookmarks/coding/frontend/vue.md"
+              "link": "/bookmarks/coding/01-frontend/vue.md"
             }
           ],
           "collapsed": false
@@ -51,12 +57,6 @@
         }
       ],
       "collapsed": false
-    }
-  ],
-  "/jade/": [
-    {
-      "text": "todo",
-      "link": "/jade/todo.md"
     }
   ],
   "/learning-english/": [
@@ -81,6 +81,5 @@
       "text": "api-examples",
       "link": "/posts/api-examples.md"
     }
-  ],
-  "/src/": []
+  ]
 }

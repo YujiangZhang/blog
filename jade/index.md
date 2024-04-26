@@ -6,7 +6,9 @@
 
 ## sidebar 侧边栏
 
-侧边栏会根据 pages 自动生成侧边栏，即源目录结构。**默认配置**时将根据以下规则生成：
+~~vite 插件: 侧边栏会根据 pages 自动生成侧边栏，即源目录结构。~~
+
+配置创建时调用 **默认配置**时将根据以下规则生成：
 
 - 文件 'index.md' 会使该文件所在文件夹生成 link
 - 根据文件名排序
@@ -14,16 +16,15 @@
   - `01-folder/02-file.md`: 显示为 `folder/file`
 - 路由重写: `01-folder/02-file.md` 将生成 `folder/file.html`
 
+<<<@/.vitepress/config.mts#sidebar{ts}
+
 ::: tip
-以上规则仅适用于默认配置。
+以上规则仅适用于默认配置。非插件，开发模式下不自动更新，根据 config.mts 更新。
 
-::: details 自定义说明
-<<< @/.vitepress/plugins/types.ts#sidebar
+::: details 配置类型
+<<< @/.vitepress/sidebar/types.ts#Options
 :::
 
-::: danger
-底部编辑链接 filepath 会与原链接不一样
-:::
 
 ## markdown
 

@@ -1,9 +1,17 @@
 import { defineConfig } from "vitepress";
 import custom from "./custom";
 import { genFeed } from "./genFeed";
-import { sidebarGeneratorPlugin } from "./plugins";
+import { generateSidebar } from "./sidebar";
+
+// #region sidebar
+const { sidebar, rewrites } = generateSidebar({
+  exclude: ["src/"],
+  include: ["bookmarks/.*\\.json"],
+});
+// #endregion sidebar
 
 // https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   cleanUrls: true,
   srcExclude: ["**/README.md", "src/**/*.md"],
@@ -13,11 +21,6 @@ export default defineConfig({
   },
 
   buildEnd: genFeed,
-  vite: {
-    plugins: [sidebarGeneratorPlugin()],
-  },
-
-  // #region 站点数据
   lang: "zh-CN",
   title: "Jade",
   description: "笔记",
@@ -28,14 +31,9 @@ export default defineConfig({
     },
   }),
 
-  // #region 主题
   appearance: "dark",
   lastUpdated: true,
 
-  // #region 国际化
-  locales: custom.locals,
-
-  // #region markdown
   markdown: {
     math: true,
     image: {
@@ -50,12 +48,12 @@ export default defineConfig({
     },
   },
 
-  // region themeConfig
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+  rewrites: rewrites,
 
+  themeConfig: {
     logo: "/logo.svg",
     nav: custom.nav,
+    sidebar,
     search: {
       provider: "local",
     },
@@ -68,7 +66,6 @@ export default defineConfig({
       },
     ],
 
-    // #region editLink
     editLink: {
       pattern: ({ filePath, frontmatter, ...rest }) => {
         const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
@@ -79,7 +76,6 @@ export default defineConfig({
       text: "在 Github 上编辑此页面",
     },
 
-    //#endregion editLink
     lastUpdated: {
       text: "最后更新于",
       formatOptions: {

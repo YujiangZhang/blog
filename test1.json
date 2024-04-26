@@ -1,0 +1,1239 @@
+{
+  "root": "C:/Users/jiang/jade",
+  "base": "/",
+  "cacheDir": "C:/Users/jiang/jade/.vitepress/cache",
+  "plugins": [
+    {
+      "name": "vitepress"
+    },
+    {
+      "name": "vitepress:rewrites"
+    },
+    {
+      "name": "vite:vue",
+      "api": {
+        "options": {
+          "isProduction": false,
+          "compiler": null,
+          "include": [
+            {},
+            {}
+          ],
+          "customElement": {},
+          "template": {
+            "compilerOptions": {}
+          },
+          "root": "C:\\Users\\jiang\\jade",
+          "sourceMap": true,
+          "cssDevSourcemap": false,
+          "devToolsEnabled": true
+        },
+        "version": "5.0.4"
+      }
+    },
+    {
+      "name": "vitepress:hmr-fix"
+    },
+    {
+      "name": "vitepress:webfonts",
+      "enforce": "pre"
+    },
+    {
+      "name": "jade-sidebar-generator"
+    },
+    {
+      "name": "vitepress:local-search"
+    },
+    {
+      "name": "vitepress:data"
+    },
+    {
+      "name": "vitepress:dynamic-routes"
+    },
+    {
+      "name": "jade-sidebar-generator"
+    }
+  ],
+  "server": {
+    "_": [
+      "dev"
+    ],
+    "fs": {
+      "allow": [
+        "C:\\Users\\jiang\\jade\\node_modules\\vitepress\\dist\\client",
+        "C:/Users/jiang/jade",
+        "C:\\Users\\jiang\\jade"
+      ]
+    }
+  },
+  "customLogger": {
+    "hasWarned": false
+  },
+  "resolve": {
+    "alias": [
+      {
+        "find": "@theme",
+        "replacement": "C:/Users/jiang/jade/.vitepress/theme"
+      },
+      {
+        "find": "@siteData",
+        "replacement": "/@siteData"
+      },
+      {
+        "find": {},
+        "replacement": "C:\\Users\\jiang\\jade\\node_modules\\vitepress\\dist\\client\\index.js"
+      },
+      {
+        "find": {},
+        "replacement": "C:\\Users\\jiang\\jade\\node_modules\\vitepress\\dist\\client\\theme-default\\index.js"
+      },
+      {
+        "find": {},
+        "replacement": "C:\\Users\\jiang\\jade\\node_modules\\vitepress\\lib\\vue-demi.mjs"
+      },
+      {
+        "find": {},
+        "replacement": "C:\\Users\\jiang\\jade\\node_modules\\vue\\dist\\vue.runtime.esm-bundler.js"
+      }
+    ],
+    "dedupe": [
+      "vue"
+    ]
+  },
+  "define": {
+    "__VP_LOCAL_SEARCH__": true,
+    "__ALGOLIA__": false,
+    "__CARBON__": false,
+    "__ASSETS_DIR__": "\"assets\"",
+    "__VUE_PROD_HYDRATION_MISMATCH_DETAILS__": false,
+    "__VUE_OPTIONS_API__": true,
+    "__VUE_PROD_DEVTOOLS__": false
+  },
+  "optimizeDeps": {
+    "include": [
+      "vue",
+      "vitepress > @vue/devtools-api",
+      "vitepress > @vueuse/core"
+    ],
+    "exclude": [
+      "@docsearch/js",
+      "vitepress"
+    ]
+  },
+  "vitepress": {
+    "root": "C:/Users/jiang/jade",
+    "srcDir": "C:/Users/jiang/jade",
+    "assetsDir": "assets",
+    "site": {
+      "lang": "zh-CN",
+      "dir": "ltr",
+      "title": "Jade",
+      "description": "笔记",
+      "base": "/",
+      "head": [
+        [
+          "link",
+          {
+            "rel": "apple-touch-icon",
+            "sizes": "180x180",
+            "href": "/favicon/light_rounded/apple-touch-icon.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "icon",
+            "type": "image/png",
+            "sizes": "32x32",
+            "href": "/favicon/light_rounded/favicon-32x32.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "icon",
+            "type": "image/png",
+            "sizes": "16x16",
+            "href": "/favicon/light_rounded/favicon-16x16.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "manifest",
+            "href": "/favicon/light_rounded/site.webmanifest"
+          }
+        ],
+        [
+          "script",
+          {
+            "id": "check-dark-mode"
+          },
+          ";(() => {\n            const preference = localStorage.getItem('vitepress-theme-appearance') || 'dark'\n            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches\n            if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')\n              document.documentElement.classList.add('dark')\n          })()"
+        ],
+        [
+          "script",
+          {
+            "id": "check-mac-os"
+          },
+          "document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))"
+        ]
+      ],
+      "router": {
+        "prefetchLinks": true
+      },
+      "appearance": "dark",
+      "themeConfig": {
+        "logo": "/logo.svg",
+        "nav": [
+          {
+            "text": "Jade",
+            "activeMatch": "/jade/",
+            "link": "/jade/"
+          },
+          {
+            "text": "书签",
+            "activeMatch": "/bookmarks/",
+            "items": [
+              {
+                "items": [
+                  {
+                    "text": "更多 ♾️",
+                    "link": "/bookmarks/"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "text": "有道词典",
+                    "link": "https://dict.youdao.com/"
+                  },
+                  {
+                    "text": "哔哩哔哩",
+                    "link": "https://www.bilibili.com/"
+                  },
+                  {
+                    "text": "Github",
+                    "link": "https://github.com/"
+                  },
+                  {
+                    "text": "Chat-GPT",
+                    "link": "https://chat.openai.com/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "英语",
+            "activeMatch": "/learning-english/",
+            "items": [
+              {
+                "text": "脑洞部长 - 150 天英文剧",
+                "link": "/learning-english/150 天英文剧/"
+              }
+            ]
+          }
+        ],
+        "search": {
+          "provider": "local"
+        },
+        "sidebar": {
+          "/jade/": [
+            {
+              "text": "todo",
+              "link": "/jade/todo.md"
+            }
+          ],
+          "/bookmarks/": [
+            {
+              "text": "resource",
+              "link": "/bookmarks/00-resource.md"
+            },
+            {
+              "text": "ai",
+              "link": "/bookmarks/01-ai.md"
+            },
+            {
+              "text": "file-processing",
+              "link": "/bookmarks/03-file-processing.md"
+            },
+            {
+              "text": "coding",
+              "items": [
+                {
+                  "text": "frontend",
+                  "items": [
+                    {
+                      "text": "angular",
+                      "link": "/bookmarks/coding/01-frontend/angular.md"
+                    },
+                    {
+                      "text": "frontend-development",
+                      "link": "/bookmarks/coding/01-frontend/frontend-development.md"
+                    },
+                    {
+                      "text": "react",
+                      "link": "/bookmarks/coding/01-frontend/react.md"
+                    },
+                    {
+                      "text": "vue",
+                      "link": "/bookmarks/coding/01-frontend/vue.md"
+                    }
+                  ],
+                  "collapsed": false
+                },
+                {
+                  "text": "backend",
+                  "link": "/bookmarks/coding/backend.md"
+                },
+                {
+                  "text": "java",
+                  "link": "/bookmarks/coding/java.md"
+                },
+                {
+                  "text": "python",
+                  "link": "/bookmarks/coding/python.md"
+                }
+              ],
+              "collapsed": false
+            }
+          ],
+          "/learning-english/": [
+            {
+              "text": "150 天英文剧",
+              "link": "/learning-english/150 天英文剧/index.md",
+              "items": [
+                {
+                  "text": "001",
+                  "link": "/learning-english/150 天英文剧/001.md"
+                }
+              ],
+              "collapsed": false
+            }
+          ],
+          "/posts/": [
+            {
+              "text": "Markdown 扩展",
+              "link": "/posts/Markdown 扩展.md"
+            },
+            {
+              "text": "api-examples",
+              "link": "/posts/api-examples.md"
+            }
+          ]
+        },
+        "socialLinks": [
+          {
+            "icon": "github",
+            "link": "https://github.com/zyj-dev/",
+            "ariaLabel": "github link"
+          }
+        ],
+        "editLink": {
+          "text": "在 Github 上编辑此页面"
+        },
+        "lastUpdated": {
+          "text": "最后更新于",
+          "formatOptions": {
+            "dateStyle": "short",
+            "timeStyle": "medium"
+          }
+        },
+        "docFooter": {
+          "prev": "上一页",
+          "next": "下一页"
+        },
+        "darkModeSwitchLabel": "外观",
+        "sidebarMenuLabel": "菜单",
+        "returnToTopLabel": "返回顶部",
+        "externalLinkIcon": true,
+        "outline": {
+          "level": "deep",
+          "label": "页面导航"
+        }
+      },
+      "locales": {
+        "root": {
+          "label": "中文",
+          "lang": "zh"
+        }
+      },
+      "scrollOffset": 134,
+      "cleanUrls": true
+    },
+    "themeDir": "C:/Users/jiang/jade/.vitepress/theme",
+    "pages": [
+      "bookmarks/index.md",
+      "index.md",
+      "jade/index.md",
+      "jade/todo.md",
+      "learning-english/150 天英文剧/001.md",
+      "learning-english/150 天英文剧/index.md",
+      "learning-english/index.md",
+      "posts/Markdown 扩展.md",
+      "posts/api-examples.md",
+      "bookmarks/00-resource.md",
+      "bookmarks/01-ai.md",
+      "bookmarks/03-file-processing.md",
+      "bookmarks/coding/01-frontend/angular.md",
+      "bookmarks/coding/01-frontend/frontend-development.md",
+      "bookmarks/coding/01-frontend/react.md",
+      "bookmarks/coding/01-frontend/vue.md",
+      "bookmarks/coding/backend.md",
+      "bookmarks/coding/java.md",
+      "bookmarks/coding/python.md"
+    ],
+    "dynamicRoutes": {
+      "routes": [
+        {
+          "path": "bookmarks/00-resource.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/00-resource.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "00-resource",
+            "data": [
+              {
+                "text": "Cloud",
+                "items": [
+                  {
+                    "text": "阿里云",
+                    "link": "https://home.console.aliyun.com/",
+                    "icon": "ali"
+                  },
+                  {
+                    "text": "腾讯云",
+                    "link": "https://console.cloud.tencent.com/",
+                    "icon": "tencent-cloud"
+                  },
+                  {
+                    "text": "华为云",
+                    "link": "https://auth.huaweicloud.com/",
+                    "icon": "huawei"
+                  }
+                ]
+              },
+              {
+                "text": "SVG",
+                "items": [
+                  {
+                    "text": "阿里图标",
+                    "link": "https://www.iconfont.cn/",
+                    "icon": "iconfont"
+                  },
+                  {
+                    "text": "Heroicons",
+                    "link": "https://heroicons.com/",
+                    "icon": "heroicons.png"
+                  }
+                ]
+              },
+              {
+                "text": "Image",
+                "items": [
+                  {
+                    "text": "favicon.io",
+                    "link": "https://favicon.io/",
+                    "icon": "favicon-io.png"
+                  },
+                  {
+                    "text": "Wallhaven",
+                    "link": "https://wallhaven.cc/",
+                    "icon": "wallhaven.ico"
+                  },
+                  {
+                    "text": "Wallhere",
+                    "link": "https://wallhere.com/",
+                    "icon": "wallhere.png"
+                  },
+                  {
+                    "text": "Wallpapers Home",
+                    "link": "https://wallpapershome.com/",
+                    "icon": "wallpapershome.png"
+                  }
+                ]
+              },
+              {
+                "text": "Audio",
+                "items": [
+                  {
+                    "text": "歌曲宝",
+                    "link": "https://www.gequbao.com/"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/01-ai.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/01-ai.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "01-ai",
+            "data": [
+              {
+                "text": "Chat",
+                "items": [
+                  {
+                    "text": "ChatGpt",
+                    "link": "https://chat.openai.com/",
+                    "icon": "chat-gpt"
+                  },
+                  {
+                    "text": "Claude",
+                    "link": "https://claude.ai/chats",
+                    "icon": "claude.ico"
+                  }
+                ]
+              },
+              {
+                "text": "Image",
+                "items": [
+                  {
+                    "text": "Midjourney",
+                    "link": "https://www.midjourney.com/home",
+                    "icon": "midjourney.png"
+                  },
+                  {
+                    "text": "Artbreeder",
+                    "link": "https://www.artbreeder.com/create",
+                    "icon": "artbreeder"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/03-file-processing.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/03-file-processing.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "03-file-processing",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "convert",
+                    "link": "https://convert.io/cn/",
+                    "icon": "convert"
+                  },
+                  {
+                    "text": "Online Convert",
+                    "link": "https://www.online-convert.com/",
+                    "icon": "online-convert.ico"
+                  }
+                ]
+              },
+              {
+                "text": "PDF",
+                "items": [
+                  {
+                    "text": "PDF24 Tools",
+                    "link": "https://tools.pdf24.org/zh/",
+                    "icon": "pdf24"
+                  }
+                ]
+              },
+              {
+                "text": "Image",
+                "items": [
+                  {
+                    "text": "favicon",
+                    "link": "https://favicon.io/",
+                    "icon": "favicon-io.png"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/01-frontend/angular.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/01-frontend/angular.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/01-frontend/angular",
+            "data": [
+              {
+                "text": "Angular",
+                "items": [
+                  {
+                    "text": "Angular",
+                    "link": "https://angular.io/",
+                    "icon": "angular"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/01-frontend/frontend-development.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/01-frontend/frontend-development.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/01-frontend/frontend-development",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "MDN",
+                    "link": "https://developer.mozilla.org/zh-CN/",
+                    "icon": "mdn.png"
+                  },
+                  {
+                    "text": "NodeJs",
+                    "link": "https://nodejs.org/en",
+                    "icon": "nodejs.png"
+                  },
+                  {
+                    "text": "W3C",
+                    "link": "https://www.w3.org/",
+                    "icon": "w3c.ico"
+                  }
+                ]
+              },
+              {
+                "text": "快速构建",
+                "items": [
+                  {
+                    "text": "VitePress",
+                    "link": "https://vitepress.dev/zh/",
+                    "icon": "vitepress"
+                  },
+                  {
+                    "text": "Storybook",
+                    "link": "https://storybook.js.org/",
+                    "icon": "storybook"
+                  }
+                ]
+              },
+              {
+                "text": "包管理",
+                "items": [
+                  {
+                    "text": "npm",
+                    "link": "https://www.npmjs.com/",
+                    "icon": "npm.png"
+                  },
+                  {
+                    "text": "yarn",
+                    "link": "https://yarnpkg.com/",
+                    "icon": "yarn"
+                  },
+                  {
+                    "text": "pnpm",
+                    "link": "https://pnpm.io/",
+                    "icon": "pnpm"
+                  }
+                ]
+              },
+              {
+                "text": "构建工具",
+                "items": [
+                  {
+                    "text": "Vite",
+                    "link": "https://cn.vitejs.dev/",
+                    "icon": "vite"
+                  },
+                  {
+                    "text": "Gulp",
+                    "link": "https://gulpjs.com/",
+                    "icon": "gulp.png"
+                  },
+                  {
+                    "text": "Rollup",
+                    "link": "https://rollupjs.org/",
+                    "icon": "rollup"
+                  },
+                  {
+                    "text": "Webpack",
+                    "link": "https://webpack.js.org/",
+                    "icon": "webpack"
+                  },
+                  {
+                    "text": "Babel",
+                    "link": "https://babel.dev/",
+                    "icon": "babel"
+                  },
+                  {
+                    "text": "Parcel",
+                    "link": "https://parceljs.org/",
+                    "icon": "parcel.avif"
+                  }
+                ]
+              },
+              {
+                "text": "CSS",
+                "items": [
+                  {
+                    "text": "Stylus",
+                    "link": "https://stylus-lang.com/",
+                    "icon": "stylus"
+                  },
+                  {
+                    "text": "Sass",
+                    "link": "https://sass-lang.com/",
+                    "icon": "sass"
+                  },
+                  {
+                    "text": "less",
+                    "link": "https://lesscss.org/",
+                    "icon": "less.png"
+                  },
+                  {
+                    "text": "Bootstrap",
+                    "link": "https://getbootstrap.com/",
+                    "icon": "bootstrap.png"
+                  },
+                  {
+                    "text": "tailwindcss",
+                    "link": "https://tailwindcss.com/",
+                    "icon": "tailwind.ico"
+                  },
+                  {
+                    "text": "bulma",
+                    "link": "https://bulma.io/",
+                    "icon": "bulma.ico"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/01-frontend/react.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/01-frontend/react.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/01-frontend/react",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "React",
+                    "link": "https://react.dev/learn",
+                    "icon": "react"
+                  },
+                  {
+                    "text": "NextJs",
+                    "link": "https://nextjs.org/",
+                    "icon": "nextjs"
+                  },
+                  {
+                    "text": "Remix",
+                    "link": "https://remix.run/",
+                    "icon": "remix.png"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/01-frontend/vue.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/01-frontend/vue.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/01-frontend/vue",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "Vue Blog",
+                    "link": "https://blog.vuejs.org/",
+                    "icon": "vue"
+                  }
+                ]
+              },
+              {
+                "text": "文档",
+                "items": [
+                  {
+                    "text": "Vue",
+                    "link": "https://cn.vuejs.org/",
+                    "icon": "vue"
+                  },
+                  {
+                    "text": "Vite",
+                    "link": "https://cn.vitejs.dev/",
+                    "icon": "vite"
+                  },
+                  {
+                    "text": "Vue Router",
+                    "link": "https://router.vuejs.org/zh/",
+                    "icon": "vue"
+                  },
+                  {
+                    "text": "Pinia",
+                    "link": "https://pinia.vuejs.org/zh/",
+                    "icon": "pinia"
+                  },
+                  {
+                    "text": "Nuxt",
+                    "link": "https://nuxt.com/",
+                    "icon": "nuxt"
+                  },
+                  {
+                    "text": "VueUse",
+                    "link": "https://www.vueusejs.com/",
+                    "icon": "vueuse"
+                  }
+                ]
+              },
+              {
+                "text": "Github",
+                "items": [
+                  {
+                    "text": "vuejs/core",
+                    "link": "https://github.com/vuejs/core",
+                    "icon": "vue"
+                  },
+                  {
+                    "text": "vitejs/vite",
+                    "link": "https://github.com/vitejs/vite",
+                    "icon": "vite"
+                  },
+                  {
+                    "text": "nuxt/nuxt",
+                    "link": "https://github.com/nuxt/nuxt/tree/2.x?tab=readme-ov-file",
+                    "icon": "nuxt"
+                  }
+                ]
+              },
+              {
+                "text": "UI",
+                "items": [
+                  {
+                    "text": "Ant Design Vue",
+                    "link": "https://www.antdv.com/components/overview-cn",
+                    "icon": "ant-design-vue"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/backend.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/backend.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/backend",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "Express",
+                    "link": "https://express.nodejs.cn/",
+                    "icon": "express.png"
+                  },
+                  {
+                    "text": "Flask",
+                    "link": "https://flask.palletsprojects.com/en/latest/",
+                    "icon": "flask.webp"
+                  },
+                  {
+                    "text": "SQLite",
+                    "link": "https://www.sqlite.org/index.html",
+                    "icon": "sqlite.gif"
+                  },
+                  {
+                    "text": "MongoDB",
+                    "link": "https://www.mongodb.com/zh-cn",
+                    "icon": "mongodb.ico"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/java.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/java.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/java",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "Java",
+                    "link": "https://www.oracle.com/cn/java/",
+                    "icon": "java"
+                  },
+                  {
+                    "text": "Learn Java",
+                    "link": "https://dev.java/learn/",
+                    "icon": "java"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "path": "bookmarks/coding/python.md",
+          "fullPath": "C:/Users/jiang/jade/bookmarks/coding/python.md",
+          "route": "bookmarks/[bm].md",
+          "params": {
+            "bm": "coding/python",
+            "data": [
+              {
+                "items": [
+                  {
+                    "text": "Python",
+                    "link": "https://www.python.org/",
+                    "icon": "python.ico"
+                  },
+                  {
+                    "text": "Flask",
+                    "link": "https://flask.palletsprojects.com/en/latest/",
+                    "icon": "flask.webp"
+                  },
+                  {
+                    "text": "pandas",
+                    "link": "https://pandas.pydata.org/",
+                    "icon": "pandas.ico"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "fileToModulesMap": {
+        "C:/Users/jiang/jade/bookmarks/[bm].md": {},
+        "C:/Users/jiang/jade/bookmarks/[bm].paths.ts": {}
+      }
+    },
+    "configPath": "C:/Users/jiang/jade/.vitepress/config.mts",
+    "configDeps": [
+      "C:/Users/jiang/jade/.vitepress/custom/nav/bookmark.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/nav/learningEnglish.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/nav/jade.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/nav/index.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/head/index.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/i18n/index.ts",
+      "C:/Users/jiang/jade/.vitepress/custom/index.ts",
+      "C:/Users/jiang/jade/.vitepress/genFeed.ts",
+      "C:/Users/jiang/jade/.vitepress/plugins/sidebarGenerator.ts",
+      "C:/Users/jiang/jade/.vitepress/plugins/index.ts",
+      "C:/Users/jiang/jade/.vitepress/config.mts"
+    ],
+    "outDir": "C:/Users/jiang/jade/.vitepress/dist",
+    "cacheDir": "C:/Users/jiang/jade/.vitepress/cache",
+    "logger": {
+      "hasWarned": false
+    },
+    "tempDir": "C:/Users/jiang/jade/.vitepress/.temp",
+    "markdown": {
+      "math": true,
+      "image": {
+        "lazyLoading": true
+      },
+      "container": {
+        "tipLabel": "提示",
+        "warningLabel": "警告",
+        "dangerLabel": "危险",
+        "infoLabel": "信息",
+        "detailsLabel": "详细信息"
+      }
+    },
+    "lastUpdated": true,
+    "vite": {
+      "plugins": [
+        {
+          "name": "jade-sidebar-generator"
+        }
+      ]
+    },
+    "mpa": false,
+    "metaChunk": true,
+    "cleanUrls": true,
+    "useWebFonts": false,
+    "rewrites": {
+      "map": {
+        "jade/index.md": "test/index.md"
+      },
+      "inv": {
+        "test/index.md": "jade/index.md"
+      }
+    },
+    "userConfig": {
+      "cleanUrls": true,
+      "srcExclude": [
+        "**/README.md",
+        "src/**/*.md"
+      ],
+      "metaChunk": true,
+      "sitemap": {
+        "hostname": "https://jadezhang.cn"
+      },
+      "vite": {
+        "plugins": [
+          {
+            "name": "jade-sidebar-generator"
+          }
+        ]
+      },
+      "lang": "zh-CN",
+      "title": "Jade",
+      "description": "笔记",
+      "head": [
+        [
+          "link",
+          {
+            "rel": "apple-touch-icon",
+            "sizes": "180x180",
+            "href": "/favicon/light_rounded/apple-touch-icon.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "icon",
+            "type": "image/png",
+            "sizes": "32x32",
+            "href": "/favicon/light_rounded/favicon-32x32.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "icon",
+            "type": "image/png",
+            "sizes": "16x16",
+            "href": "/favicon/light_rounded/favicon-16x16.png"
+          }
+        ],
+        [
+          "link",
+          {
+            "rel": "manifest",
+            "href": "/favicon/light_rounded/site.webmanifest"
+          }
+        ],
+        [
+          "script",
+          {
+            "id": "check-dark-mode"
+          },
+          ";(() => {\n            const preference = localStorage.getItem('vitepress-theme-appearance') || 'dark'\n            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches\n            if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')\n              document.documentElement.classList.add('dark')\n          })()"
+        ],
+        [
+          "script",
+          {
+            "id": "check-mac-os"
+          },
+          "document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))"
+        ]
+      ],
+      "appearance": "dark",
+      "lastUpdated": true,
+      "locales": {
+        "root": {
+          "label": "中文",
+          "lang": "zh"
+        }
+      },
+      "markdown": {
+        "math": true,
+        "image": {
+          "lazyLoading": true
+        },
+        "container": {
+          "tipLabel": "提示",
+          "warningLabel": "警告",
+          "dangerLabel": "危险",
+          "infoLabel": "信息",
+          "detailsLabel": "详细信息"
+        }
+      },
+      "rewrites": {
+        "jade/index.md": "test/index.md"
+      },
+      "themeConfig": {
+        "logo": "/logo.svg",
+        "nav": [
+          {
+            "text": "Jade",
+            "activeMatch": "/jade/",
+            "link": "/jade/"
+          },
+          {
+            "text": "书签",
+            "activeMatch": "/bookmarks/",
+            "items": [
+              {
+                "items": [
+                  {
+                    "text": "更多 ♾️",
+                    "link": "/bookmarks/"
+                  }
+                ]
+              },
+              {
+                "items": [
+                  {
+                    "text": "有道词典",
+                    "link": "https://dict.youdao.com/"
+                  },
+                  {
+                    "text": "哔哩哔哩",
+                    "link": "https://www.bilibili.com/"
+                  },
+                  {
+                    "text": "Github",
+                    "link": "https://github.com/"
+                  },
+                  {
+                    "text": "Chat-GPT",
+                    "link": "https://chat.openai.com/"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "英语",
+            "activeMatch": "/learning-english/",
+            "items": [
+              {
+                "text": "脑洞部长 - 150 天英文剧",
+                "link": "/learning-english/150 天英文剧/"
+              }
+            ]
+          }
+        ],
+        "search": {
+          "provider": "local"
+        },
+        "sidebar": {
+          "/jade/": [
+            {
+              "text": "todo",
+              "link": "/jade/todo.md"
+            }
+          ],
+          "/bookmarks/": [
+            {
+              "text": "resource",
+              "link": "/bookmarks/00-resource.md"
+            },
+            {
+              "text": "ai",
+              "link": "/bookmarks/01-ai.md"
+            },
+            {
+              "text": "file-processing",
+              "link": "/bookmarks/03-file-processing.md"
+            },
+            {
+              "text": "coding",
+              "items": [
+                {
+                  "text": "frontend",
+                  "items": [
+                    {
+                      "text": "angular",
+                      "link": "/bookmarks/coding/01-frontend/angular.md"
+                    },
+                    {
+                      "text": "frontend-development",
+                      "link": "/bookmarks/coding/01-frontend/frontend-development.md"
+                    },
+                    {
+                      "text": "react",
+                      "link": "/bookmarks/coding/01-frontend/react.md"
+                    },
+                    {
+                      "text": "vue",
+                      "link": "/bookmarks/coding/01-frontend/vue.md"
+                    }
+                  ],
+                  "collapsed": false
+                },
+                {
+                  "text": "backend",
+                  "link": "/bookmarks/coding/backend.md"
+                },
+                {
+                  "text": "java",
+                  "link": "/bookmarks/coding/java.md"
+                },
+                {
+                  "text": "python",
+                  "link": "/bookmarks/coding/python.md"
+                }
+              ],
+              "collapsed": false
+            }
+          ],
+          "/learning-english/": [
+            {
+              "text": "150 天英文剧",
+              "link": "/learning-english/150 天英文剧/index.md",
+              "items": [
+                {
+                  "text": "001",
+                  "link": "/learning-english/150 天英文剧/001.md"
+                }
+              ],
+              "collapsed": false
+            }
+          ],
+          "/posts/": [
+            {
+              "text": "Markdown 扩展",
+              "link": "/posts/Markdown 扩展.md"
+            },
+            {
+              "text": "api-examples",
+              "link": "/posts/api-examples.md"
+            }
+          ]
+        },
+        "socialLinks": [
+          {
+            "icon": "github",
+            "link": "https://github.com/zyj-dev/",
+            "ariaLabel": "github link"
+          }
+        ],
+        "editLink": {
+          "text": "在 Github 上编辑此页面"
+        },
+        "lastUpdated": {
+          "text": "最后更新于",
+          "formatOptions": {
+            "dateStyle": "short",
+            "timeStyle": "medium"
+          }
+        },
+        "docFooter": {
+          "prev": "上一页",
+          "next": "下一页"
+        },
+        "darkModeSwitchLabel": "外观",
+        "sidebarMenuLabel": "菜单",
+        "returnToTopLabel": "返回顶部",
+        "externalLinkIcon": true,
+        "outline": {
+          "level": "deep",
+          "label": "页面导航"
+        }
+      }
+    },
+    "sitemap": {
+      "hostname": "https://jadezhang.cn"
+    },
+    "buildConcurrency": 64
+  },
+  "ssr": {
+    "external": []
+  }
+}
