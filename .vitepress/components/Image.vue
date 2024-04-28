@@ -73,10 +73,11 @@ const fetchImage = async () => {
   }
 
   try {
-    const [blobURL] = await Promise.all([
-      getImageBlobURL(props.src),
-      asyncDelay(),
-    ]);
+    // const [blobURL] = await Promise.all([
+    //   getImageBlobURL(props.src),
+    //   asyncDelay(),
+    // ]);
+    const blobURL = await getImageBlobURL(props.src);
 
     src.value = blobURL;
     state.value = "success";
@@ -120,7 +121,9 @@ onUnmounted(() => clearBlobURL());
 }
 
 .loading {
-  background: linear-gradient(to top left, #09a1ff, #7ed0fc);
+  /* background: linear-gradient(to top left, #09a1ff, #7ed0fc); */
+  background-color: var(--vp-c-bg-soft);
+  box-shadow: var(--vp-shadow-3);
 }
 
 .error {

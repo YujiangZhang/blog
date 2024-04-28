@@ -1,9 +1,0 @@
-[
-  {
-    "items": [
-      { "text": "React", "link": "https://react.dev/learn", "icon": "react" },
-      { "text": "NextJs", "link": "https://nextjs.org/", "icon": "nextjs" },
-      { "text": "Remix", "link": "https://remix.run/", "icon": "remix.png" }
-    ]
-  }
-]

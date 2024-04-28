@@ -14,7 +14,7 @@ const { params } = useData()
 
 </script>
 
-# {{ params.bm.match(/[^/]+$/)[0].replace('-', ' ').toUpperCase() }}
+# {{ params.bm.match(/[^/]+$/)[0].replace('-', ' ').replace(/^\d+\s?/, '').toUpperCase() }}
 
 ::: details :tada:
 根据 `/docs/bookmark` 中的 `*.json` 数据生成，见 [VitePress: 动态生成路径](https://vitepress.dev/zh/guide/routing#dynamically-generating-paths)。

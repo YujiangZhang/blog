@@ -24,7 +24,7 @@ function getPaths(
       return;
     }
 
-    // 仅处理 .json, 并且存在同名 .md 时不处理
+    // 仅处理 .json, 存在同名 .md 时不处理
     if (
       path.extname(bm) !== ".json" ||
       fs.existsSync(filepath.replace(".json", ".md"))
@@ -35,7 +35,8 @@ function getPaths(
 
     params.bm = path
       .relative(base, filepath)
-      .replace(/[\\\\, \\]/g, "/")
+      .split(path.sep)
+      .join("/")
       .replace(".json", "");
 
     const data = fs.readFileSync(path.resolve(p, bm), {

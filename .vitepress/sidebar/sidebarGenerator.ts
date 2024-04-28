@@ -17,20 +17,20 @@ type Info = {
 };
 
 function removeStartingDigitsAndHyphens(str: string) {
-  return str.replace(/^(?:\d+[-])?(.*)$/, "$1");
+  return str.replace(/^(?:\d+\s?[-]\s?)?(.*)$/, "$1");
 }
 
 // #region 类
 
 export default class SidebarGenerator {
-  pages: string[];
-
   sidebar: SidebarMulti = {};
   rewrites: Record<string, string> = {};
 
   src: Options["src"];
+
   exclude: Options["exclude"];
   include: Options["include"];
+
   _exclude = new Set([
     "node_modules",
     ".vitepress",
@@ -49,36 +49,27 @@ export default class SidebarGenerator {
   // #region constructor
   constructor(options?: Options) {
     let {
+      src = "./",
       exclude = [],
       include = [],
       sortRules = [],
       pathAsText = true,
-      src = SidebarGenerator.defaultSrc,
       rewritePath = SidebarGenerator.defaultRewritePath,
       transformSidebarItem,
     }: Options = options ?? {};
 
     this.src = src;
     this.pathAsText = pathAsText;
-    this.exclude = SidebarGenerator.defaultExclude(exclude);
-    this.include = SidebarGenerator.defaultInclude(include);
+    this.exclude = _.union([...["\\[.+\\]\\.md$"], ...exclude]);
+    this.include = _.union([...include]);
 
     this.rewritePath = rewritePath;
     this.sortRules = sortRules;
     this.transformSidebarItem = transformSidebarItem;
   }
 
-  static defaultSrc = "./";
-
-  static defaultExclude(exclude: string[]) {
-    return _.union([...["\\[.+\\]\\.md$"], ...exclude]);
-  }
-
-  static defaultInclude(include: string[]) {
-    return _.union([...include]);
-  }
-
-  static defaultRewritePath(segment: string, parentPath?: null | TextLink) {
+  // #region defaultRewritePath
+  static defaultRewritePath(segment: string, parentPath?: TextLink | null) {
     const ext = path.extname(segment);
     let text = removeStartingDigitsAndHyphens(segment);
     let linkFormater = text;
@@ -96,84 +87,104 @@ export default class SidebarGenerator {
     };
   }
 
-  static defaultFormateSidebarItem(item: SidebarItem) {
-    const ext = path.extname(item.text!);
-    item.text = removeStartingDigitsAndHyphens(item.text!).replace(ext, "");
-    item.items && (item.collapsed = false);
-    return item;
-  }
+  // #endregion defaultRewritePath
 
   srcpath(filepath: string) {
     return path.resolve(this.src!, filepath);
   }
 
+  isDir(filepath: string) {
+    return statSync(this.srcpath(filepath)).isDirectory();
+  }
+
   // #region valid
-  valid(filepath: string) {
+
+  validExclude(filepath: string) {
     const base = path.basename(filepath);
-    const fullPath = this.srcpath(filepath);
+    return (
+      this._exclude.has(base) ||
+      new RegExp(this.exclude!.join("|")).test(filepath)
+    );
+  }
 
-    if (this._exclude.has(base)) return null;
-
-    const excludePattern = new RegExp(this.exclude!.join("|"));
-
-    if (excludePattern.test(filepath)) return null;
-
-    if (statSync(fullPath).isDirectory())
-      return {
-        isDir: true,
-      };
-
-    if (this._include.has(path.extname(base))) return { isFile: true };
+  validInclude(filepath: string) {
+    if (this._include.has(path.extname(filepath))) return { isFile: true };
 
     const includePattern = new RegExp(this.include!.join("|"));
-    return includePattern.test(filepath) ? { isFile: true } : null;
+    return includePattern.test(filepath);
+  }
+
+  validPathType(filepath: string) {
+    return this.isDir(filepath)
+      ? { isDir: true }
+      : this.validInclude(filepath)
+      ? { isFile: true }
+      : null;
+  }
+
+  valid(filepath: string) {
+    if (this.validExclude(filepath)) return null;
+    return this.validPathType(filepath);
   }
 
   // #region info
-  info(filepath: string, parentInfo?: Info): Info {
+
+  infoBase(filepath: string, parentInfo?: Info) {
     let text = path.basename(filepath);
     let ext: string | null = path.extname(filepath);
-
-    let filenameFormater = text;
-    if (ext && ext !== ".md") {
-      filenameFormater = text.replace(ext, ".md");
-    }
-
-    let rewrite: Record<"text" | "link", string> | undefined;
-    if (this.rewritePath) {
-      const parentRewrite: TextLink | null = parentInfo?.rewrite
-        ? parentInfo.rewrite
-        : null;
-      rewrite = this.rewritePath(filenameFormater, parentRewrite);
-
-      this.pathAsText && (text = rewrite.text);
-    }
 
     return {
       text: text,
       ext: ext || null,
-      link: parentInfo
-        ? `${parentInfo.link}/${filenameFormater}`
-        : `/${filenameFormater}`,
-      rewrite,
     };
   }
 
+  infoRewrite(textAfterFormate: string, info: Info, parentInfo?: Info) {
+    if (!this.rewritePath) return undefined;
+    const parentRewrite: TextLink | null = parentInfo?.rewrite
+      ? parentInfo.rewrite
+      : null;
+
+    info.rewrite = this.rewritePath(textAfterFormate, parentRewrite);
+
+    this.pathAsText && (info.text = info.rewrite.text);
+  }
+
+  info(filepath: string, parentInfo?: Info): Info {
+    const base = this.infoBase(filepath, parentInfo);
+
+    let textFormater =
+      base.ext && base.ext !== ".md"
+        ? base.text.replace(base.ext, ".md")
+        : base.text;
+
+    const info = {
+      ...base,
+      link: parentInfo
+        ? `${parentInfo.link}/${textFormater}`
+        : `/${textFormater}`,
+    };
+
+    this.infoRewrite(textFormater, info, parentInfo);
+    return info;
+  }
+
   // #region setRewrite
+
   setRewrite(from: string, to: string) {
     if (!from || !to || from === to) return;
-    from.startsWith("/") && (from = from.slice(1));
-    to.startsWith("/") && (to = to.slice(1));
+    from = from.replace(/^\//, "");
+    to = to.replace(/^\//, "");
     this.rewrites[from] = to;
   }
 
   // #region genItem
+
   genItem(info: Info): SidebarItem {
     let text: string = info.text;
     let link: string;
 
     if (this.rewritePath) {
-      // text = info.rewrite!.text; // 交给 transformItem
       link = info.rewrite!.link;
       this.setRewrite(info.link, link);
     } else {
@@ -181,14 +192,11 @@ export default class SidebarGenerator {
       link = info.link;
     }
 
-    if (info.ext) {
-      return { text, link };
-    } else {
-      return { text };
-    }
+    return info.ext ? { text, link } : { text };
   }
 
   // region transformItems
+
   transformItems(items: SidebarItem[]) {
     return this.transformSidebarItem
       ? items.map((item) => {
@@ -198,28 +206,55 @@ export default class SidebarGenerator {
   }
 
   // #region genItems
+
+  genItemsGetSortedPaths(folderPath: string) {
+    let filenames = _.sortBy(
+      readdirSync(this.srcpath(folderPath)),
+      ...this.sortRules!
+    );
+
+    const paths: { filepath: string; isDir?: boolean; isFile?: boolean }[] = [];
+
+    for (const filename of filenames) {
+      const filepath = `${folderPath}/${filename}`;
+      const valid = this.valid(filepath);
+      if (!valid) continue;
+
+      paths.push({ filepath, ...valid });
+    }
+
+    return paths;
+  }
+
+  genItemsPush(
+    items: SidebarItem[],
+    {
+      item,
+      info,
+      parentItem,
+    }: { item: SidebarItem; info: Info; parentItem?: SidebarItem }
+  ) {
+    if (info.text === "index" || info.text === "index.md") {
+      parentItem && (parentItem.link = info.link);
+    } else {
+      items.push(item);
+    }
+  }
+
   genItems(
     folderPath: string,
     { parentInfo, parentItem }: { parentInfo?: Info; parentItem?: SidebarItem }
   ) {
     const items: SidebarItem[] = [];
 
-    let filenames = readdirSync(this.srcpath(folderPath));
+    const sortedPaths = this.genItemsGetSortedPaths(folderPath);
 
-    filenames = _.sortBy(filenames, ...this.sortRules!);
-
-    for (const filename of filenames) {
-      const filepath = `${folderPath}/${filename}`;
-
-      const valid = this.valid(filepath);
-      if (!valid) continue;
-
-      const info = this.info(filepath, parentInfo);
-
+    for (const pathItem of sortedPaths) {
+      const info = this.info(pathItem.filepath, parentInfo);
       const item = this.genItem(info);
 
-      if (valid.isDir) {
-        const children = this.genItems(filepath, {
+      if (pathItem.isDir) {
+        const children = this.genItems(pathItem.filepath, {
           parentInfo: info,
           parentItem: item,
         });
@@ -229,11 +264,7 @@ export default class SidebarGenerator {
         }
       }
 
-      if (info.text === "index" || info.text === "index.md") {
-        parentItem && (parentItem.link = info.link);
-      } else {
-        items.push(item);
-      }
+      this.genItemsPush(items, { item, info, parentItem });
     }
 
     return this.transformItems(items);
@@ -250,7 +281,7 @@ export default class SidebarGenerator {
     return this.sidebar;
   }
 
-  // #region 启动
+  // #region start
   start() {
     this.generate();
     return { sidebar: this.sidebar, rewrites: this.rewrites };
@@ -297,19 +328,22 @@ export function generateSidebar(
   mergeOptions?: MergeOptions,
   customizer: GeneratorCustomizer = SidebarGenerator.mergeCustomizer
 ): SidebarGeneratorResult {
+  const generater = new SidebarGenerator(options);
+  let result: SidebarGeneratorResult;
+
   try {
-    const generater = new SidebarGenerator(options);
-    if (mergeOptions) {
-      return generater.mergeWith(mergeOptions, customizer);
-    } else {
-      return generater.start();
-    }
+    result = mergeOptions
+      ? generater.mergeWith(mergeOptions, customizer)
+      : generater.start();
   } catch (err) {
     console.log(`\x1b[33m[generateSidebar] 生成失败: \x1b[0m`, err);
-    return (mergeOptions ?? {
+    result = (mergeOptions ?? {
       sidebar: {},
       rewrites: {},
     }) as SidebarGeneratorResult;
   }
+
+  return result;
 }
+
 // #endregion 函数

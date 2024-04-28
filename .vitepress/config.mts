@@ -5,7 +5,6 @@ import custom from "./custom";
 
 // #region sidebar
 const { sidebar, rewrites } = generateSidebar({
-  exclude: ["src/"],
   include: ["bookmarks/.*\\.json"],
 });
 // #endregion sidebar
@@ -48,7 +47,7 @@ export default defineConfig({
     },
   },
 
-  rewrites: rewrites,
+  rewrites,
 
   themeConfig: {
     logo: "/logo.svg",
@@ -67,7 +66,7 @@ export default defineConfig({
     ],
 
     editLink: {
-      pattern: ({ filePath, frontmatter, ...rest }) => {
+      pattern: ({ filePath, frontmatter }) => {
         const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
         const link = jSrcExt ? filePath.replace(".md", jSrcExt) : filePath;
 

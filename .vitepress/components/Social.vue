@@ -3,7 +3,7 @@ import { VPTeamMembers } from "vitepress/theme";
 import { Image, LinkBar } from ".";
 
 const HFACTOR = 7 / 5;
-const imageBase = 130;
+const imageBase = 110;
 const imageWidth = imageBase + "px";
 const imageHeight = HFACTOR * imageBase + "px";
 
@@ -46,21 +46,22 @@ const members = [
 </script>
 
 <template>
-  <div class="social">
+  <section class="social">
     <VPTeamMembers size="small" :members="members" />
     <div class="qrcodes">
       <div v-for="(item, key) in social" :key="item.text" class="qrcode">
-        <LinkBar :data="item" :logo="true" />
+        <LinkBar :data="item" :logo="true" class="bar" />
         <Image
           :src="item.image"
           :width="imageWidth"
           :height="imageHeight"
           :alt="item.text"
-          borderRadius=".25rem"
+          borderRadius="6px"
+          class="image"
         />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -71,17 +72,35 @@ const members = [
   flex-direction: row;
   justify-content: center;
   align-items: end;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .social {
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   row-gap: 1rem;
+  margin: 0 auto;
 }
+
 .qrcode {
   width: 100%;
+  height: 232px;
+  overflow: hidden;
+  gap: 0.5rem;
   flex-direction: column;
   align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 12px;
+}
+
+.image {
+  box-shadow: var(--vp-shadow-3);
+}
+
+@media (max-width: 980px) {
+  .social {
+    justify-content: center;
+  }
 }
 </style>
