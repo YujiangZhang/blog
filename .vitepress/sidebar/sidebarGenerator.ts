@@ -235,7 +235,8 @@ export default class SidebarGenerator {
     }: { item: SidebarItem; info: Info; parentItem?: SidebarItem }
   ) {
     if (info.text === "index" || info.text === "index.md") {
-      parentItem && (parentItem.link = info.link);
+      parentItem &&
+        (parentItem.link = this.rewritePath ? info.rewrite!.link : info.link);
     } else {
       items.push(item);
     }
