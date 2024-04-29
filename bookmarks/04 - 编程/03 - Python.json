@@ -2,16 +2,16 @@
   {
     "items": [
       { "text": "Python", "link": "https://www.python.org/",
-      "icon": "python.ico" },
+      "icon": "python" },
       {
         "text": "Flask",
         "link": "https://flask.palletsprojects.com/en/latest/",
-        "icon": "flask.webp"
+        "icon": "flask"
       },
       {
         "text": "pandas",
         "link": "https://pandas.pydata.org/",
-        "icon": "pandas.ico"
+        "icon": "pandas"
       }
     ]
   }

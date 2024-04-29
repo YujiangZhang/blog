@@ -1,0 +1,132 @@
+[
+  {
+    "items": [
+      {
+        "text": "MDN",
+        "link": "https://developer.mozilla.org/zh-CN/",
+        "icon": "mdn.png"
+      },
+      {
+        "text": "NodeJs",
+        "link": "https://nodejs.org/en",
+        "icon": "nodejs.png"
+      },
+      {
+        "text": "W3C",
+        "link": "https://www.w3.org/",
+        "icon": "w3c"
+      }
+    ]
+  },
+
+  {
+    "items": [
+      {
+        "text": "TypeScript",
+        "link": "https://www.typescriptlang.org/zh/docs/",
+        "icon": "typescript.png"
+      },
+      {
+        "text": "Babel",
+        "link": "https://babel.dev/",
+        "icon": "babel"
+      },
+
+      {
+        "text": "VitePress",
+        "link": "https://vitepress.dev/zh/",
+        "icon": "vitepress"
+      },
+      {
+        "text": "Storybook",
+        "link": "https://storybook.js.org/",
+        "icon": "storybook"
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "npm",
+        "link": "https://www.npmjs.com/",
+        "icon": "npm"
+      },
+      {
+        "text": "yarn",
+        "link": "https://yarnpkg.com/",
+        "icon": "yarn"
+      },
+      {
+        "text": "pnpm",
+        "link": "https://pnpm.io/",
+        "icon": "pnpm"
+      }
+    ]
+  },
+
+  {
+    "text": "构建工具",
+    "items": [
+      {
+        "text": "Rollup",
+        "link": "https://rollupjs.org/",
+        "icon": "rollup"
+      },
+      {
+        "text": "Vite",
+        "link": "https://cn.vitejs.dev/",
+        "icon": "vite"
+      },
+      {
+        "text": "Gulp",
+        "link": "https://gulpjs.com/",
+        "icon": "gulp"
+      },
+      {
+        "text": "Webpack",
+        "link": "https://webpack.js.org/",
+        "icon": "webpack"
+      },
+      {
+        "text": "Parcel",
+        "link": "https://parceljs.org/",
+        "icon": "parcel.avif"
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "items": [
+      {
+        "text": "Stylus",
+        "link": "https://stylus-lang.com/",
+        "icon": "stylus"
+      },
+      { "text": "Sass", "link": "https://sass-lang.com/", "icon": "sass" },
+      { "text": "less", "link": "https://lesscss.org/", "icon": "less.png" },
+
+      {
+        "text": "Bootstrap",
+        "link": "https://getbootstrap.com/",
+        "icon": "bootstrap"
+      },
+      {
+        "text": "tailwindcss",
+        "link": "https://tailwindcss.com/",
+        "icon": "tailwind"
+      },
+      { "text": "bulma", "link": "https://bulma.io/", "icon": "bulma" }
+    ]
+  },
+  {
+    "text": "JS",
+    "items": [
+      {
+        "text": "three.js",
+        "link": "https://threejs.org/docs/index.html#manual/zh/introduction/Creating-a-scene"
+      },
+      { "text": "axios", "link": "https://github.com/axios/axios" },
+      { "text": "GSAP", "link": "https://github.com/greensock/GSAP" }
+    ]
+  }
+]

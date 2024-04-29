@@ -1,6 +1,8 @@
-
-
 # Jade
+
+<script setup>
+import JSocial from '/.vitepress/components/JSocial.vue'
+</script>
 
 <JSocial />
 
@@ -10,4 +12,3 @@
 - 更多笔记见侧边栏。
 
 :::
-

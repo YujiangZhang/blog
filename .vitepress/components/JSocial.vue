@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { VPTeamMembers } from "vitepress/theme";
-import { Image, LinkBar } from ".";
+import JImage from "./JImage.vue";
+import JLinkBar from "./JLinkBar.vue";
 
 const HFACTOR = 7 / 5;
 const imageBase = 110;
@@ -50,8 +51,8 @@ const members = [
     <VPTeamMembers size="small" :members="members" />
     <div class="qrcodes">
       <div v-for="(item, key) in social" :key="item.text" class="qrcode">
-        <LinkBar :data="item" :logo="true" class="bar" />
-        <Image
+        <JLinkBar :data="item" :logo="true" class="bar" />
+        <JImage
           :src="item.image"
           :width="imageWidth"
           :height="imageHeight"

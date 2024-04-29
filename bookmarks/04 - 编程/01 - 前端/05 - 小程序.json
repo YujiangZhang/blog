@@ -2,7 +2,11 @@
   {
     "text": "微信小程序",
     "items": [
-      { "text": "Angular", "link": "https://developers.weixin.qq.com/doc/" }
+      {
+        "text": "开发文档",
+        "link": "https://developers.weixin.qq.com/doc/",
+        "icon": "mini-program"
+      }
     ]
   }
 ]

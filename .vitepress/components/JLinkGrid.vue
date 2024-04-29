@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { h, defineComponent, computed } from "vue";
-import LinkBar from "./LinkBar.vue";
 import { Link } from "./types";
+import JLinkBar from "./JLinkBar.vue";
 
 interface Props {
   data: Link[] | Link | null | undefined;
@@ -50,7 +50,7 @@ const Title = defineComponent({
         dataItem.text
       }}</Title>
     </template>
-    <LinkBar class="links" :data="dataItem.items" :logo="true" container />
+    <JLinkBar class="links" :data="dataItem.items" :logo="true" container />
   </section>
 </template>
 

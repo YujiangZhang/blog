@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import Image from "./Image.vue";
 import { Link } from "./types";
+import JLogo from "./JLogo.vue";
 
 interface Props {
   data: Link[] | Link | null | undefined;
@@ -31,7 +31,7 @@ const data = computed(() => {
         :title="item.text + '链接'"
         :target="props.target || '_blank'"
       >
-        <Image
+        <JLogo
           :src="item.icon"
           :logo="props.logo"
           width="1.2rem"
@@ -42,7 +42,7 @@ const data = computed(() => {
         <span class="text">{{ item.text }}</span>
       </a>
 
-      <LinkBar
+      <JLinkBar
         v-else
         :data="item.items"
         :logo="props.logo"
@@ -50,7 +50,7 @@ const data = computed(() => {
         :deep="props.deep"
         :target="props.target"
         :borderRadius="props.imgBorderRadius"
-      ></LinkBar>
+      ></JLinkBar>
     </template>
   </div>
 </template>
@@ -61,7 +61,8 @@ const data = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, max-content));
   grid-auto-flow: dense;
-  gap: 0.5rem;
+  column-gap: 1rem;
+  row-gap: .75rem;
   align-items: start;
 }
 
