@@ -4,10 +4,10 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 const props = defineProps<{
   src: string | undefined;
   alt: string;
-  logo?: boolean; // 是否为本地 logo
   width?: string;
   height?: string;
   borderRadius?: string;
+  objectFit?: "contain" | "cover";
   style?: Record<string, unknown>;
 }>();
 
@@ -26,19 +26,6 @@ const style = computed(() => {
   };
 });
 
-/** 处理引用 logo 内文件的情况 */
-const normalizeSrc = (src: string) => {
-  if (!props.logo) return src;
-  return `/assets/logo/${src.lastIndexOf(".") === -1 ? src + ".svg" : src}`;
-};
-
-// 异步延迟
-const asyncDelay = async () => {
-  return new Promise((resolve, _reject) => {
-    setTimeout(() => resolve(true), 300);
-  });
-};
-
 // blob URL
 const blobURLs: string[] = [];
 const clearBlobURL = () => {
@@ -47,7 +34,7 @@ const clearBlobURL = () => {
 
 /** 每当调用该函数，在合适的时机调用 clearBlobURL */
 const getImageBlobURL = async (src: string) => {
-  const res = await fetch(normalizeSrc(src));
+  const res = await fetch(src);
 
   if (!res.ok) {
     throw new Error(`图片 ${src} 加载失败, statusText ${res.statusText}`);
@@ -101,6 +88,9 @@ onUnmounted(() => clearBlobURL());
       :src="src"
       :alt="props.alt"
       class="item img"
+      :style="{
+        objectFit: props.objectFit || 'contain',
+      }"
     />
     <span v-else-if="state === 'error'" class="item error"></span>
     <span v-else class="item null"></span>
@@ -114,10 +104,6 @@ onUnmounted(() => clearBlobURL());
   height: inherit;
   border-radius: inherit;
   padding: 0;
-}
-
-.img {
-  object-fit: contain;
 }
 
 .loading {

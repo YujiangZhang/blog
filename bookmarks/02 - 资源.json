@@ -20,8 +20,12 @@
     ]
   },
   {
-    "text": "SVG",
+    "text": "图",
     "items": [
+      {
+        "text": "Font Awesome",
+        "link": "https://fontawesome.com/"
+      },
       {
         "text": "阿里图标",
         "link": "https://www.iconfont.cn/",
@@ -31,17 +35,8 @@
         "text": "Heroicons",
         "link": "https://heroicons.com/",
         "icon": "heroicons.png"
-      }
-    ]
-  },
-  {
-    "text": "Image",
-    "items": [
-      {
-        "text": "favicon.io",
-        "link": "https://favicon.io/",
-        "icon": "favicon-io.png"
       },
+
       {
         "text": "Wallhaven",
         "link": "https://wallhaven.cc/",
@@ -56,15 +51,6 @@
         "text": "Wallpapers Home",
         "link": "https://wallpapershome.com/",
         "icon": "wallpapershome.png"
-      }
-    ]
-  },
-  {
-    "text": "Audio",
-    "items": [
-      {
-        "text": "歌曲宝",
-        "link": "https://www.gequbao.com/"
       }
     ]
   }

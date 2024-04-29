@@ -13,7 +13,7 @@ export type Sidebar = SidebarItem[] | SidebarMulti;
  */
 export type TextLink = { text: string; link: string };
 
-export interface Options {
+export type Options = {
   src?: string;
 
   /**
@@ -61,7 +61,7 @@ export interface Options {
    * 默认去除 text 值开头符合 /\d+[-]/ 的部分, 见 static default transformSidebarItem
    */
   transformSidebarItem?: (sidebarItem: SidebarItem) => SidebarItem;
-}
+};
 
 export type MergeOptions = {
   sidebar?: SidebarMulti;

@@ -2,13 +2,13 @@
 # region frontmatter
 title: Jade
 titleTemplate: 书签
-aside: false
 jSrcExt: .json # [!code focus]
 # endregion frontmatter
 ---
 
 <script setup>
 import { useData } from 'vitepress'
+import JLinkGrid from '/.vitepress/components/JLinkGrid.vue'
 
 const { params } = useData()
 
@@ -22,4 +22,4 @@ const { params } = useData()
 若需自定义该页面，需编写与该 `.json` 文件同名的 `.md` 文件。
 :::
 
-<LinkGrid :data="params.data" titleLevel="normal" />
+<JLinkGrid :data="params.data" titleLevel="normal" />

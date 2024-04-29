@@ -5,5 +5,32 @@
       { "text": "NextJs", "link": "https://nextjs.org/", "icon": "nextjs" },
       { "text": "Remix", "link": "https://remix.run/", "icon": "remix.png" }
     ]
+  },
+  {
+    "items": [
+      {
+        "text": "Motion",
+        "link": "https://www.framer.com/motion/"
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "Semantic UI",
+        "link": "https://react.semantic-ui.com/",
+        "icon": "semantic-ui.png"
+      },
+      {
+        "text": "MUI X",
+        "link": "https://mui.com/x/react-data-grid/",
+        "icon": "mui-x"
+      },
+      {
+        "text": "chakra",
+        "link": "https://v2.chakra-ui.com/getting-started",
+        "icon": "chakra"
+      }
+    ]
   }
 ]
