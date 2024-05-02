@@ -10,8 +10,8 @@ Created by potrace 1.16, written by Peter Selinger 2001-2019
 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
 <linearGradient id="gradient" x1="68%" y1="0%" x2="0%" y2="100%">
-  <stop offset="0%" style="stop-color:#6f63f4" />
-  <stop offset="100%" style="stop-color:#09a1ff" />
+  <stop offset="0%" style="stop-color:#6f42c1" />
+  <stop offset="100%" style="stop-color:#3a5ccc" />
 </linearGradient>
 <path d="M1642 4459 c-228 -24 -332 -69 -463 -199 -99 -98 -166 -195 -209
 -302 -33 -85 -38 -129 -14 -152 27 -28 39 -20 74 48 80 155 435 328 849 412

@@ -6,7 +6,14 @@ import custom from "./custom";
 // #region sidebar
 const { sidebar, rewrites } = generateSidebar({
   include: ["bookmarks/.*\\.json"],
-  exclude: ["posts/"],
+  sortRules: {
+    posts: [
+      (filename: string) => {
+        const matches = filename.match(/^(\d*)/);
+        return matches && matches[1] ? -matches[1] : filename;
+      },
+    ],
+  },
 });
 // #endregion sidebar
 

@@ -11,8 +11,8 @@ const nav: DefaultTheme.Config["nav"] = [
   // #region Jade
   {
     text: "笔记",
-    activeMatch: "/jade/",
-    link: "/jade/Jade",
+    activeMatch: "/notes/",
+    link: "/notes/",
   },
 
   // #region 书签

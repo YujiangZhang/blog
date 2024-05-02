@@ -43,7 +43,7 @@ export default class SidebarGenerator {
 
   pathAsText: Options["pathAsText"];
   rewritePath: Options["rewritePath"];
-  sortRules: Options["sortRules"];
+  sortRules: Record<string | "global", any[]>;
   transformSidebarItem: Options["transformSidebarItem"];
 
   // #region constructor
@@ -64,7 +64,9 @@ export default class SidebarGenerator {
     this.include = _.union([...include]);
 
     this.rewritePath = rewritePath;
-    this.sortRules = sortRules;
+    this.sortRules = Array.isArray(sortRules)
+      ? { global: sortRules }
+      : { global: [], ...sortRules };
     this.transformSidebarItem = transformSidebarItem;
   }
 
@@ -95,6 +97,20 @@ export default class SidebarGenerator {
 
   isDir(filepath: string) {
     return statSync(this.srcpath(filepath)).isDirectory();
+  }
+
+  getSortRules(folderPath: string) {
+    const dir = (path.relative(this.src!, folderPath) || "global")
+      .split(path.sep)
+      .join("/");
+    return this.sortRules[dir] || this.sortRules["global"];
+  }
+
+  setRewrite(from: string, to: string) {
+    if (!from || !to || from === to) return;
+    from = from.replace(/^\//, "");
+    to = to.replace(/^\//, "");
+    this.rewrites[from] = to;
   }
 
   // #region valid
@@ -129,7 +145,7 @@ export default class SidebarGenerator {
 
   // #region info
 
-  infoBase(filepath: string, parentInfo?: Info) {
+  infoBase(filepath: string) {
     let text = path.basename(filepath);
     let ext: string | null = path.extname(filepath);
 
@@ -151,7 +167,7 @@ export default class SidebarGenerator {
   }
 
   info(filepath: string, parentInfo?: Info): Info {
-    const base = this.infoBase(filepath, parentInfo);
+    const base = this.infoBase(filepath);
 
     let textFormater =
       base.ext && base.ext !== ".md"
@@ -168,17 +184,6 @@ export default class SidebarGenerator {
     this.infoRewrite(textFormater, info, parentInfo);
     return info;
   }
-
-  // #region setRewrite
-
-  setRewrite(from: string, to: string) {
-    if (!from || !to || from === to) return;
-    from = from.replace(/^\//, "");
-    to = to.replace(/^\//, "");
-    this.rewrites[from] = to;
-  }
-
-  // #region genItem
 
   genItem(info: Info): SidebarItem {
     let text: string = info.text;
@@ -210,7 +215,7 @@ export default class SidebarGenerator {
   genItemsGetSortedPaths(folderPath: string) {
     let filenames = _.sortBy(
       readdirSync(this.srcpath(folderPath)),
-      ...this.sortRules!
+      ...this.getSortRules(folderPath)
     );
 
     const paths: { filepath: string; isDir?: boolean; isFile?: boolean }[] = [];

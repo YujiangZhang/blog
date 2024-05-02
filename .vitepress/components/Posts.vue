@@ -123,7 +123,7 @@ function getDateTime(date: Post["date"]) {
 
 /* article */
 .article {
-  border-top: 1px solid var(--vp-c-gray-soft);
+  border-top: 1px solid var(--vp-c-divider);
   padding-top: 2rem;
   padding-bottom: 2rem;
 
@@ -176,7 +176,6 @@ function getDateTime(date: Post["date"]) {
   background-position: center;
 
   border-radius: 0.5rem;
-  /* opacity: 0.2; */
 }
 
 .image::before {

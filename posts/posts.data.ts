@@ -18,13 +18,15 @@ export default createContentLoader("posts/[^index]*.md", {
   excerpt: true,
   transform(raw): Post[] {
     return raw
-      .map(({ url, frontmatter, excerpt }) => ({
-        title: frontmatter.title,
-        url,
-        excerpt,
-        date: formatDate(frontmatter.date),
-        image: frontmatter.image,
-      }))
+      .map(({ url, frontmatter, excerpt }) => {
+        return {
+          title: frontmatter.title,
+          url: url.replace(/.*\/(?:\d+\s?[-]\s?)?(.*)$/, "$1"),
+          excerpt,
+          date: formatDate(frontmatter.date),
+          image: frontmatter.image,
+        };
+      })
       .sort((a, b) => b.date.time - a.date.time);
   },
 });
