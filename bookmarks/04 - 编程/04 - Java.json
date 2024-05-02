@@ -1,10 +1,26 @@
 [
   {
     "items": [
-      { "text": "Java", "link": "https://www.oracle.com/cn/java/",
-      "icon": "java" },
-      { "text": "Learn Java", "link": "https://dev.java/learn/",
-      "icon": "java" }
+      {
+        "text": "JDK",
+        "link": "JDK: https://jdk.java.net/",
+        "icon": "java"
+      },
+      {
+        "text": "Oracle",
+        "link": "https://www.oracle.com/cn/java/",
+        "icon": "oracle"
+      },
+      {
+        "text": "Learn Java",
+        "link": "https://dev.java/learn/",
+        "icon": "java"
+      },
+      {
+        "text": "Spring",
+        "link": "https://spring.io/",
+        "icon": "spring"
+      }
     ]
   }
 ]

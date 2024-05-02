@@ -1,3 +1,7 @@
+/**
+ * @see https://github.com/vuejs/blog/blob/main/.vitepress/theme/posts.data.ts
+ */
+
 import { createContentLoader } from "vitepress";
 
 interface Post {
@@ -10,10 +14,7 @@ interface Post {
   excerpt: string | undefined;
 }
 
-declare const data: Post[];
-export { data };
-
-export default createContentLoader("posts/*.md", {
+export default createContentLoader("posts/[^index]*.md", {
   excerpt: true,
   transform(raw): Post[] {
     return raw
@@ -22,6 +23,7 @@ export default createContentLoader("posts/*.md", {
         url,
         excerpt,
         date: formatDate(frontmatter.date),
+        image: frontmatter.image,
       }))
       .sort((a, b) => b.date.time - a.date.time);
   },
@@ -29,7 +31,12 @@ export default createContentLoader("posts/*.md", {
 
 function formatDate(raw: string): Post["date"] {
   const date = new Date(raw);
-  date.setUTCHours(12);
+  date.setHours(12);
+
+  if (isNaN(date.getTime())) {
+    throw new Error("Invalid date");
+  }
+
   return {
     time: +date,
     string: date.toLocaleDateString("zh-CN", {

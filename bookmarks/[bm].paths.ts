@@ -49,6 +49,7 @@ function getPaths(
 }
 
 export default {
+  watch: ["./*.json"],
   async paths() {
     const paths = [];
     getPaths(bookmarkDir, paths, bookmarkDir);

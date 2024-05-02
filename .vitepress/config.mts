@@ -6,6 +6,7 @@ import custom from "./custom";
 // #region sidebar
 const { sidebar, rewrites } = generateSidebar({
   include: ["bookmarks/.*\\.json"],
+  exclude: ["posts/"],
 });
 // #endregion sidebar
 
@@ -36,7 +37,7 @@ export default defineConfig({
   markdown: {
     math: true,
     image: {
-      lazyLoading: true,
+      lazyLoading: false,
     },
     container: {
       tipLabel: "提示",

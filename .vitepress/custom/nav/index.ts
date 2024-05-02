@@ -1,19 +1,19 @@
 import { DefaultTheme } from "vitepress";
 
 const nav: DefaultTheme.Config["nav"] = [
+  // #region 动态
+  {
+    text: "动态",
+    activeMatch: "/posts/",
+    link: "/posts/",
+  },
+
   // #region Jade
   {
     text: "笔记",
     activeMatch: "/jade/",
     link: "/jade/Jade",
   },
-
-  // #region 动态
-  // {
-  //   text: "动态",
-  //   activeMatch: "/posts/",
-  //   link: "/posts/",
-  // },
 
   // #region 书签
   {

@@ -24,6 +24,17 @@
         "link": "https://nuxt.com/",
         "icon": "nuxt"
       },
+
+      {
+        "text": "VitePress",
+        "link": "https://vitepress.dev/zh/",
+        "icon": "vitepress"
+      },
+      {
+        "text": "Rolldown",
+        "link": "https://rolldown.rs/",
+        "icon": "rolldown-round"
+      },
       {
         "text": "VueUse",
         "link": "https://www.vueusejs.com/",
