@@ -41,13 +41,7 @@ function getDateTime(date: Post["date"]) {
             </dd>
           </dl>
           <div class="content">
-            <div
-              v-if="post.image"
-              class="image"
-              :style="{
-                backgroundImage: `url(${post.image})`,
-              }"
-            ></div>
+            <div v-if="post.image" class="image"></div>
             <h2 class="article-title">
               <a :href="post.url">{{ post.title }}</a>
             </h2>
@@ -172,19 +166,20 @@ function getDateTime(date: Post["date"]) {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
+  /* background-size: containt;
+  background-position: right center;
+  background-repeat: no-repeat; */
 
   border-radius: 0.5rem;
 }
 
-.image::before {
+/* .image::before {
   content: "";
   display: block;
   width: 100%;
   height: 100%;
   background: linear-gradient(35deg, var(--vp-c-bg-soft), transparent);
-}
+} */
 
 /* article- */
 .article-title {

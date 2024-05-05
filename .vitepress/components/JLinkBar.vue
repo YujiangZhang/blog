@@ -28,7 +28,7 @@ const data = computed(() => {
         class="link"
         :key="index"
         :href="item.link"
-        :title="item.text + '链接'"
+        :title="item.text"
         :target="props.target || '_blank'"
       >
         <JLogo
@@ -38,6 +38,7 @@ const data = computed(() => {
           height="1.2rem"
           :borderRadius="props.imgBorderRadius"
           alt=""
+          class="logo"
         />
         <span class="text">{{ item.text }}</span>
       </a>
@@ -62,7 +63,7 @@ const data = computed(() => {
   grid-template-columns: repeat(auto-fill, minmax(150px, max-content));
   grid-auto-flow: dense;
   column-gap: 1rem;
-  row-gap: .75rem;
+  row-gap: 0.75rem;
   align-items: start;
 }
 
@@ -87,6 +88,10 @@ const data = computed(() => {
 .link:hover {
   background-color: var(--vp-button-alt-bg);
   color: inherit;
+}
+
+.logo {
+  flex-shrink: 0;
 }
 
 /* text */

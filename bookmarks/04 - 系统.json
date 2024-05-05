@@ -1,0 +1,11 @@
+[
+  {
+    "text": "windows",
+    "items": [
+      {
+        "text": "WSL",
+        "link": "https://learn.microsoft.com/zh-cn/windows/wsl/"
+      }
+    ]
+  }
+]

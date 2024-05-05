@@ -1,0 +1,40 @@
+[
+  {
+    "items": [
+      {
+        "text": "Rust",
+        "link": "https://www.rust-lang.org/zh-CN/",
+        "icon": "rust"
+      },
+      {
+        "text": "rustup",
+        "link": "https://rustup.rs/"
+      },
+      {
+        "text": "cargo",
+        "link": "https://doc.rust-lang.org/cargo/index.html"
+      },
+      {
+        "text": "crates.io",
+        "link": "https://crates.io/"
+      },
+      {
+        "text": "程序设计语言",
+        "link": "https://kaisery.github.io/trpl-zh-cn/title-page.html"
+      },
+      {
+        "text": "rustacean",
+        "link": "https://rustacean.net/"
+      }
+    ]
+  },
+  {
+    "text": "扩展",
+    "items": [
+      {
+        "text": "toml",
+        "link": "https://toml.io/cn/"
+      }
+    ]
+  }
+]

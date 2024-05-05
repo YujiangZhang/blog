@@ -15,6 +15,11 @@
         "text": "W3C",
         "link": "https://www.w3.org/",
         "icon": "w3c"
+      },
+      {
+        "text": "nvm",
+        "link": "sudo apt install gnome-text-editor -y",
+        "icon": "github"
       }
     ]
   },
