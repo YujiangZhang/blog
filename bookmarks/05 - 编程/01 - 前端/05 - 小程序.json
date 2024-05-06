@@ -3,6 +3,11 @@
     "text": "微信小程序",
     "items": [
       {
+        "text": "管理后台",
+        "link": "https://mp.weixin.qq.com/",
+        "icon": "mini-program"
+      },
+      {
         "text": "开发文档",
         "link": "https://developers.weixin.qq.com/doc/",
         "icon": "mini-program"

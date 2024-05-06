@@ -1,0 +1,2 @@
+- [Schema.org](https://schema.org/)
+- [Bing Webmaster Tools](https://www.bing.com/webmasters/home)
