@@ -2,8 +2,29 @@
   {
     "items": [
       { "text": "React", "link": "https://react.dev/learn", "icon": "react" },
+      { "text": "Redux", "link": "https://redux.js.org/", "icon": "redux" },
+
       { "text": "NextJs", "link": "https://nextjs.org/", "icon": "nextjs" },
       { "text": "Remix", "link": "https://remix.run/", "icon": "remix.png" }
+    ]
+  },
+  {
+    "text": "React Native",
+    "items": [
+      {
+        "text": "React Native",
+        "link": "https://github.com/facebook/react-native",
+        "icon": "react"
+      },
+      {
+        "text": "React Native zh_CN",
+        "link": "https://reactnative.cn/",
+        "icon": "react"
+      },
+      {
+        "text": "awesome reactive native",
+        "link": "https://github.com/jondot/awesome-react-native"
+      }
     ]
   },
   {

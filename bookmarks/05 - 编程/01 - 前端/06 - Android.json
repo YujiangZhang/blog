@@ -1,0 +1,27 @@
+[
+  {
+    "items": [
+      {
+        "text": "Android Studio",
+        "link": "https://developer.android.google.cn/studio/"
+      }
+    ]
+  },
+  {
+    "items": [
+      {
+        "text": "SDK 镜像",
+        "items": [
+          {
+            "text": "腾讯",
+            "link": "https://mirrors.cloud.tencent.com/AndroidSDK/"
+          },
+          {
+            "text": "阿里",
+            "link": "https://mirrors.aliyun.com/android.googlesource.com/"
+          }
+        ]
+      }
+    ]
+  }
+]

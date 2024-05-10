@@ -133,5 +133,15 @@
       { "text": "axios", "link": "https://github.com/axios/axios" },
       { "text": "GSAP", "link": "https://github.com/greensock/GSAP" }
     ]
+  },
+  {
+    "text": "测试",
+    "items": [
+      { "text": "Jest", "link": "https://github.com/jestjs/jest" },
+      {
+        "text": "Vitest",
+        "link": "https://github.com/vitest-dev/vitest"
+      }
+    ]
   }
 ]
