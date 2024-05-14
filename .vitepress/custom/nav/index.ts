@@ -40,6 +40,11 @@ const nav: DefaultTheme.Config["nav"] = [
           },
 
           {
+            text: "Outlook",
+            link: "https://outlook.live.com/mail/",
+          },
+
+          {
             text: "Github",
             link: "https://github.com/",
           },
