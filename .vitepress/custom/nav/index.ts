@@ -46,7 +46,7 @@ const nav: DefaultTheme.Config["nav"] = [
 
           {
             text: "Chat-GPT",
-            link: "https://chat.openai.com/",
+            link: "https://chatgpt.com/?temporary-chat=true",
           },
         ],
       },
