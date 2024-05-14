@@ -28,6 +28,7 @@
     ]
   },
   {
+    "text": "Animation",
     "items": [
       {
         "text": "Motion",
@@ -36,6 +37,7 @@
     ]
   },
   {
+    "text": "UI",
     "items": [
       {
         "text": "Semantic UI",
