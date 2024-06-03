@@ -36,6 +36,10 @@
         "icon": "rolldown-round"
       },
       {
+        "text": "UnoCss",
+        "link": "https://unocss.dev/"
+      },
+      {
         "text": "VueUse",
         "link": "https://www.vueusejs.com/",
         "icon": "vueuse"
