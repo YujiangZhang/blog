@@ -29,7 +29,7 @@ export default defineConfig({
 
   buildEnd: genFeed,
   lang: "zh-CN",
-  title: "Jade",
+  title: "Jared",
   description: "笔记",
   head: custom.defineHead({
     favicon: {
@@ -68,7 +68,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/zyjdev/",
+        link: "https://github.com/zyjared/",
         ariaLabel: "github link",
       },
     ],
@@ -78,7 +78,7 @@ export default defineConfig({
         const jSrcExt = frontmatter.jSrcExt as string | undefined; // 自定义属性
         const link = jSrcExt ? filePath.replace(".md", jSrcExt) : filePath;
 
-        return `https://github.com/zyjdev/blog/tree/main/${link}`;
+        return `https://github.com/zyjared/blog/tree/main/${link}`;
       },
       text: "在 Github 上编辑此页面",
     },

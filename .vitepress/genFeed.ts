@@ -10,7 +10,7 @@ const baseUrl = `https://jadezhang.cn`;
 //
 export async function genFeed(config: SiteConfig) {
   const feed = new Feed({
-    title: "Jade",
+    title: "Jared",
     description: "笔记",
     id: baseUrl,
     link: baseUrl,
@@ -18,7 +18,7 @@ export async function genFeed(config: SiteConfig) {
     image: `${baseUrl}/logo.svg`,
     favicon: `${baseUrl}/favicon.ico`,
     copyright:
-      "Copyright (c) 2024-present, Yujiang (Jade) Zhang and blog contributors",
+      "Copyright (c) 2024-present, Yujiang (Jared) Zhang and blog contributors",
   });
 
   const posts = await createContentLoader("posts/**/*.md", {

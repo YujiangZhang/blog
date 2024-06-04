@@ -1,0 +1,22 @@
+[
+  {
+    "text": "",
+    "items": [
+      {
+        "text": "github",
+        "link": "https://github.com/zyjared",
+        "icon": "github"
+      },
+      {
+        "text": "npm",
+        "link": "https://www.npmjs.com/settings/zyjared/profile",
+        "icon": "npm"
+      },
+      {
+        "text": "Twitter",
+        "link": "https://x.com/home",
+        "icon": "twitter"
+      }
+    ]
+  }
+]
